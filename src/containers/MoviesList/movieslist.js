@@ -1,5 +1,6 @@
 import React from 'react';
 import MovieCard from '../../components/MovieCard/moviecard';
+import './movieslist.css';
 
 const movies = [
   {
@@ -17,10 +18,25 @@ const movies = [
     description: 'Movie',
     id: '3',
   },
+  {
+    title: 'Rick and Morty',
+    description: 'Cartoon',
+    id: '4',
+  },
+  {
+    title: 'Simpsons',
+    description: 'Cartoon',
+    id: '5',
+  },
+  {
+    title: 'Gladiator',
+    description: 'Movie',
+    id: '6',
+  },
 ];
 
 const MoviesList = () => (
-  <div>
+  <div className="MoviesList">
     {movies.map((item) => (
       <MovieCard
         className="MovieCard"

@@ -1,0 +1,10 @@
+.Menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    justify-content: space-between;
+}
+
+/*.Menu > div {*/
+/*    padding: 10px;*/
+/*}*/

@@ -1,0 +1,16 @@
+.Header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #f65261;
+    font-size: 25px;
+    font-family: Helvetica, serif;
+    margin-left: 50px;
+    margin-right: 50px;
+    align-items: center;
+}
+
+.AddMovieButton {
+    height: 50px;
+    width: 150px;
+}

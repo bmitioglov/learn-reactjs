@@ -1,10 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './moviecard.css';
+
 const MovieCard = ({ title, description }) => (
   <div className="MovieCard">
-    <h3>{title}</h3>
-    <p>{description}</p>
+    <img src="https://i.pinimg.com/originals/f3/a2/0d/f3a20d7df90d3b4a4167a419a0566ff3.jpg" alt="movieImage" />
+    <div className="ImageFooter">
+      <h3>{title}</h3>
+      <p>year</p>
+    </div>
+    {/*<div>*/}
+      <p>{description}</p>
+    {/*</div>*/}
   </div>
 );
 

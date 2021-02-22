@@ -1,0 +1,32 @@
+.MovieCard {
+    display: flex;
+    /*border: solid 1px orange;*/
+    flex-direction: column;
+    font-family: Helvetica, serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.MovieCard > img {
+    width: 330px;
+}
+
+.MovieCard > p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/*.MovieCard * {*/
+/*    !*border: solid 2px purple;*!*/
+/*    margin-bottom: 0;*/
+/*}*/
+
+.ImageFooter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+

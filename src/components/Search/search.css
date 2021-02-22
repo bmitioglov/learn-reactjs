@@ -1,0 +1,27 @@
+.Search {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    margin-left: 150px;
+    margin-right: 150px;
+    font-family: Helvetica, serif;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.SearchBar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 50px;
+}
+
+.SearchInput {
+    flex-grow: 4;
+}
+
+.SearchButton {
+    margin-left: 10px;
+    flex-grow: 1;
+}
+

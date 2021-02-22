@@ -1,0 +1,10 @@
+.SortPanel {
+    display: flex;
+    /*margin-left: auto;*/
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.SortPanel > * {
+    padding: 10px;
+}
