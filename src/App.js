@@ -8,6 +8,8 @@ import MoviesList from './containers/MoviesList/movieslist';
 import Search from './components/Search/search';
 import Content from './components/ContentLayout/contentlayout';
 import SearchResult from './components/SearchResultCounter/searchresultcounter';
+import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
+import MoviesLayout from './components/MoviesLayout/movieslayout';
 
 const App = () => (
   <Content>
@@ -15,7 +17,11 @@ const App = () => (
     <Search />
     <MenuPanel />
     <SearchResult searchResult={30} />
-    <MoviesList />
+    <MoviesLayout>
+      <ErrorBoundary>
+        <MoviesList />
+      </ErrorBoundary>
+    </MoviesLayout>
     <FooterLayout>
       <p>
         <b>

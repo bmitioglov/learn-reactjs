@@ -48,4 +48,10 @@ const MoviesList = () => (
   </div>
 );
 
+// Code block to check Error Boundary
+// const MoviesList = () => {
+//   throw Error;
+//   return <></>;
+// };
+
 export default MoviesList;
