@@ -18,10 +18,19 @@
 
 .SearchInput {
     flex-grow: 4;
+    border: 0;
+    border-radius: 5px;
 }
 
 .SearchButton {
     margin-left: 10px;
     flex-grow: 1;
+    background-color: #f65261;
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    border-style: solid;
+    border: 0;
 }
 
