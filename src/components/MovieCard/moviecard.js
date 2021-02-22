@@ -10,9 +10,7 @@ const MovieCard = ({ title, description }) => (
       <h3>{title}</h3>
       <p>year</p>
     </div>
-    {/*<div>*/}
-      <p>{description}</p>
-    {/*</div>*/}
+    <p>{description}</p>
   </div>
 );
 

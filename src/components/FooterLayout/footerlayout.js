@@ -1,6 +1,11 @@
 import React from 'react';
 import './footerlayout.css';
+import PropTypes from 'prop-types';
 
-const FooterLayout = (props) => <div className="FooterLayout">{props.children}</div>;
+const FooterLayout = ({ children }) => <div className="FooterLayout">{children}</div>;
+
+FooterLayout.propTypes = {
+  children: PropTypes.instanceOf(Object).isRequired,
+};
 
 export default FooterLayout;
