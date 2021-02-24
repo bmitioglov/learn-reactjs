@@ -1,6 +1,5 @@
-.MovieCard {
+.movie-card {
     display: flex;
-    /*border: solid 1px orange;*/
     flex-direction: column;
     font-family: Helvetica, serif;
     color: #ffffff;
@@ -9,23 +8,12 @@
     justify-content: flex-start;
 }
 
-.MovieCard > img {
+.movie-image {
     width: 330px;
 }
 
-.MovieCard > p {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/*.MovieCard * {*/
-/*    !*border: solid 2px purple;*!*/
-/*    margin-bottom: 0;*/
-/*}*/
-
-.ImageFooter {
+.image-footer {
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }

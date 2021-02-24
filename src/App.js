@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import FooterLayout from './components/FooterLayout/footerlayout';
+import Footer from './components/FooterLayout/footer';
 import Header from './components/Header/header';
 import MenuPanel from './components/MenuPanel/menupanel';
 import MoviesList from './containers/MoviesList/movieslist';
@@ -22,14 +22,14 @@ const App = () => (
         <MoviesList />
       </ErrorBoundary>
     </MoviesLayout>
-    <FooterLayout>
+    <Footer>
       <p>
         <b>
           netflix
         </b>
         roulette
       </p>
-    </FooterLayout>
+    </Footer>
   </Content>
 );
 

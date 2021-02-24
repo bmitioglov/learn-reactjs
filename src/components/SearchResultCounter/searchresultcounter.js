@@ -3,7 +3,7 @@ import './searchresultcounter.css';
 import PropTypes from 'prop-types';
 
 const SearchResult = ({ searchResult }) => (
-  <div className="SearchResult">
+  <div className="search-result">
     { searchResult }
     { ' ' }
     Movies Found

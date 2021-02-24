@@ -1,28 +1,23 @@
-.Search {
+.search {
     display: flex;
     flex-direction: column;
-    margin-bottom: 50px;
-    margin-left: 150px;
-    margin-right: 150px;
+    margin: 0 150px 50px;
     font-family: Helvetica, serif;
     color: #ffffff;
     text-transform: uppercase;
 }
 
-.SearchBar {
+.search-bar {
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
     height: 50px;
 }
 
-.SearchInput {
+.search-input {
     flex-grow: 4;
-    border: 0;
-    border-radius: 5px;
 }
 
-.SearchButton {
+.search-button {
     margin-left: 10px;
     flex-grow: 1;
     background-color: #f65261;
@@ -30,8 +25,7 @@
     font-size: 16px;
     border-radius: 5px;
     text-decoration: none;
-    border-style: solid;
-    border: 0;
+    border: 0 solid;
     text-transform: uppercase;
     font-family: Helvetica, serif;
 }

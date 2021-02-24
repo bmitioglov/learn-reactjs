@@ -1,5 +1,4 @@
-.MoviesLayout {
+.movies-layout {
     min-height: 500px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 0 50px;
 }

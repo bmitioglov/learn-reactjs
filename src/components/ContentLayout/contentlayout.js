@@ -3,7 +3,7 @@ import './contentlayout.css';
 import PropTypes from 'prop-types';
 
 const Content = ({ children }) => (
-  <div className="ContentLayout">{ children }</div>
+  <div className="content-layout">{ children }</div>
 );
 
 Content.propTypes = {

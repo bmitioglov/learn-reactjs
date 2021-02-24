@@ -2,12 +2,12 @@ import React from 'react';
 import './header.css';
 
 const Header = () => (
-  <div className="Header">
+  <div className="header">
     <p>
       <b>netflix</b>
       roulette
     </p>
-    <button className="AddMovieButton" type="button">+ Add Movie</button>
+    <button className="add-movie-button" type="button">+ Add Movie</button>
   </div>
 );
 

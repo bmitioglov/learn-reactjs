@@ -3,7 +3,7 @@ import './movieslayout.css';
 import PropTypes from 'prop-types';
 
 const MoviesLayout = ({ children }) => (
-  <div className="MoviesLayout">{ children }</div>
+  <div className="movies-layout">{ children }</div>
 );
 
 MoviesLayout.propTypes = {

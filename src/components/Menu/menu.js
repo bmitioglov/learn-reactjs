@@ -2,7 +2,7 @@ import React from 'react';
 import './menu.css';
 
 const Menu = () => (
-  <ul className="Menu">
+  <ul className="menu">
     <li><a href="/">All</a></li>
     <li><a href="/">Documentary</a></li>
     <li><a href="/">Comedy</a></li>

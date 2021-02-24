@@ -2,11 +2,11 @@ import React from 'react';
 import './search.css';
 
 const Search = () => (
-  <div className="Search">
+  <div className="search">
     <h3 className="SearchHeader">Find your movie</h3>
-    <div className="SearchBar">
-      <input className="SearchInput" type="text" />
-      <button className="SearchButton" type="button">Search</button>
+    <div className="search-bar">
+      <input className="search-input" type="text" />
+      <button className="search-button" type="button">Search</button>
     </div>
   </div>
 );
