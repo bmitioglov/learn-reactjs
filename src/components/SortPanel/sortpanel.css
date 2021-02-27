@@ -1,0 +1,9 @@
+.sort-panel {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.sort-panel > * {
+    padding: 10px;
+}

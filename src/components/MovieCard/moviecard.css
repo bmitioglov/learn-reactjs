@@ -1,0 +1,20 @@
+.movie-card {
+    display: flex;
+    flex-direction: column;
+    font-family: Helvetica, serif;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 20px;
+    justify-content: flex-start;
+}
+
+.movie-image {
+    width: 330px;
+}
+
+.image-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+

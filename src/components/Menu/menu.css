@@ -1,0 +1,19 @@
+.menu {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    justify-content: space-between;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li a {
+    color: white;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
