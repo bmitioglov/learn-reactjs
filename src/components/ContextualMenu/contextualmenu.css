@@ -1,0 +1,23 @@
+.context-menu {
+    width: 120px;
+    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    background-color: #424242;
+    z-index: 10000;
+}
+
+.menu-options {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.menu-option {
+    font-weight: 500;
+    font-size: 14px;
+    padding: 10px 40px 10px 20px;
+    cursor: pointer;
+}
+
+.menu:hover {
+     background: rgba(0, 0, 0, 0.2);
+ }
