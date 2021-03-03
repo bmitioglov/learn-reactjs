@@ -4,9 +4,8 @@ import AddMovieModal from '../Modals/AddMovieModal/addmoviemodal';
 
 const Header = () => {
   const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  
+  const toggleAddModal = () => setShow((prevState) => !prevState);
 
   return (
     <>
@@ -15,9 +14,10 @@ const Header = () => {
           <b>netflix</b>
           roulette
         </p>
-        <button className="add-movie-button" type="button" onClick={handleShow}>+ Add Movie</button>
+        <button className="add-movie-button" type="button" onClick={toggleAddModal}>+ Add Movie</button>
       </div>
-      <AddMovieModal show={show} handleClose={handleClose} />
+      {/* TODO: is it ok to add it here? */}
+      <AddMovieModal show={show} onClose={toggleAddModal} />
     </>
   );
 };

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import ContextualMenu from '../ContextualMenu/contextualmenu';
+import ContextMenu from '../ContextualMenu/contextMenu';
 import more from '../../img/more.svg';
 
 import './moviecard.css';
+import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
+import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
 
 const MovieCard = ({ title, description, year }) => {
   const [menuState, setMenuState] = useState({
@@ -11,20 +13,22 @@ const MovieCard = ({ title, description, year }) => {
     yPos: '0px',
     showMenu: false,
   });
+  const [editShowModal, setEditShowModal] = useState(false);
+  const [deleteShowModal, setDeleteShowModal] = useState(false);
   
-  const handleClick = (e) => {
+  const handleOffMenuClick = (e) => {
     if (menuState.showMenu) setMenuState({ showMenu: false });
   };
   
   useEffect(() => {
-    window.addEventListener('click', handleClick);
+    window.addEventListener('click', handleOffMenuClick);
     
     return () => {
-      window.removeEventListener('click', handleClick);
+      window.removeEventListener('click', handleOffMenuClick);
     };
   });
   
-  const handleContextMenu = (e) => {
+  const showContextMenu = (e) => {
     e.preventDefault();
     
     setMenuState({
@@ -34,18 +38,26 @@ const MovieCard = ({ title, description, year }) => {
     });
   };
   
+  const toggleEdit = () => setEditShowModal((prevValue) => !prevValue);
+  const toggleDelete = () => setDeleteShowModal((prevValue) => !prevValue);
+  
   return (
     <div className="movie-card">
       <div className="image-container">
         <img className="movie-image" src="https://i.pinimg.com/originals/f3/a2/0d/f3a20d7df90d3b4a4167a419a0566ff3.jpg" alt={title} />
-        <img onClick={handleContextMenu} className="more-icon" src={more} alt="more" />
+        <img onClick={showContextMenu} className="more-icon" src={more} alt="more" />
       </div>
       <div className="image-footer">
         <h3>{title}</h3>
         <div>{year}</div>
       </div>
       <div className="description">{description}</div>
-      <ContextualMenu showMenu={menuState.showMenu} xPos={menuState.xPos} yPos={menuState.yPos} />
+      {/* TODO: is it ok to have it here? */}
+      { deleteShowModal && <DeleteMovieModal show={deleteShowModal} onClose={toggleDelete} /> }
+      { editShowModal && <EditMovieModal show={editShowModal} onClose={toggleEdit} />}
+      { menuState.showMenu && (<ContextMenu xPos={menuState.xPos} yPos={menuState.yPos}
+                                            toggleEdit={toggleEdit} toggleDelete={toggleDelete}/>)
+      }
     </div>
   );
 };

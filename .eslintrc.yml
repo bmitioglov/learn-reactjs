@@ -19,4 +19,5 @@ rules: {
   "@typescript-eslint/no-use-before-define": [ "error" ],
   "indent": 2,
   "no-trailing-spaces": "off",
+  "max-len": "off",
 }

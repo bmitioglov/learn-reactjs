@@ -2,15 +2,15 @@ import React from 'react';
 import Modal from 'react-modal';
 import './deletemoviemodal.css';
 
-const DeleteMovieModal = ({ show, handleClose }) => (
+const DeleteMovieModal = ({ show, onClose }) => (
   <Modal
     isOpen={show}
-    onRequestClose={handleClose}
+    onRequestClose={onClose}
     contentLabel="Example Modal"
     appElement={document.getElementById('app')}
     className="delete-movie-modal"
   >
-    <div className="close" onClick={handleClose}>
+    <div className="close" onClick={onClose}>
       &times;
     </div>
     <div className="modal-content">
