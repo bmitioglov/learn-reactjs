@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import './editmoviemodal.css';
 
-const EditMovieModal = ({ show, onClose }) => (
+const EditMovieModal = ({ isShown, onClose }) => (
   <Modal
-    isOpen={show}
+    isOpen={isShown}
     onRequestClose={onClose}
     contentLabel="Edit Modal"
     appElement={document.getElementById('app')}

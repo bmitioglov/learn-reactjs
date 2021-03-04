@@ -2,9 +2,9 @@ import React from 'react';
 import Modal from 'react-modal';
 import './deletemoviemodal.css';
 
-const DeleteMovieModal = ({ show, onClose }) => (
+const DeleteMovieModal = ({ isShown, onClose }) => (
   <Modal
-    isOpen={show}
+    isOpen={isShown}
     onRequestClose={onClose}
     contentLabel="Example Modal"
     appElement={document.getElementById('app')}

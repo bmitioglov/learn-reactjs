@@ -41,9 +41,8 @@ const MovieCard = ({ title, description, year }) => {
         <div>{year}</div>
       </div>
       <div className="description">{description}</div>
-      {/* TODO: is it ok to have it here? */}
-      { deleteShowModal && <DeleteMovieModal show={deleteShowModal} onClose={toggleDelete} /> }
-      { editShowModal && <EditMovieModal show={editShowModal} onClose={toggleEdit} />}
+      <DeleteMovieModal isShown={deleteShowModal} onClose={toggleDelete} />
+      <EditMovieModal isShown={editShowModal} onClose={toggleEdit} />
     </div>
   );
 };
