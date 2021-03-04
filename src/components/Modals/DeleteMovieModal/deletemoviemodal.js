@@ -15,7 +15,7 @@ const DeleteMovieModal = ({ isShown, onClose }) => (
     </div>
     <div className="modal-content">
       <h2 className="delete-movie-header">DELETE movie</h2>
-      <h3 className="delete-movie-sub-header">Are you sure you want to delete this movie?</h3>
+      <h3 className="delete-movie-content">Are you sure you want to delete this movie?</h3>
       <div className="form-buttons">
         <button className="submit-button" type="button">CONFIRM</button>
       </div>

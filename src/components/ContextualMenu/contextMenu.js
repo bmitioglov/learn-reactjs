@@ -1,16 +1,18 @@
 import React from 'react';
-import './contextualmenu.css';
+import './contextmenu.css';
 
-const ContextMenu = ({ toggleEdit, toggleDelete }) => {
+const ContextMenu = ({ options }) => {
   return (
-    <>
-      <div className="context-menu">
-        <ul className="menu-options">
-          <li className="menu-option" onClick={toggleEdit}>Edit</li>
-          <li className="menu-option" onClick={toggleDelete}>Delete</li>
-        </ul>
-      </div>
-    </>
+    <div className="context-menu">
+      <ul className="menu-options">
+        {
+          options.map(({ title, callback }) => (
+            <li className="menu-option">
+              <button className="context-button" type="button" onClick={callback}>{title}</button>
+            </li>))
+        }
+      </ul>
+    </div>
   );
 };
 
