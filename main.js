@@ -11093,24 +11093,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _contextualmenu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contextualmenu.css */ "./src/components/ContextualMenu/contextualmenu.css");
+/* harmony import */ var _contextmenu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./contextmenu.css */ "./src/components/ContextualMenu/contextmenu.css");
 
 
 
 var ContextMenu = function ContextMenu(_ref) {
-  var toggleEdit = _ref.toggleEdit,
-      toggleDelete = _ref.toggleDelete;
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  var options = _ref.options;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "context-menu"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     className: "menu-options"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    className: "menu-option",
-    onClick: toggleEdit
-  }, "Edit"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
-    className: "menu-option",
-    onClick: toggleDelete
-  }, "Delete"))));
+  }, options.map(function (_ref2) {
+    var title = _ref2.title,
+        callback = _ref2.callback;
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("li", {
+      className: "menu-option"
+    }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+      className: "context-button",
+      type: "button",
+      onClick: callback
+    }, title));
+  })));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ContextMenu);
@@ -11140,6 +11143,37 @@ var Footer = function Footer() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Footer);
+
+/***/ }),
+
+/***/ "./src/components/FormInput/forminput.js":
+/*!***********************************************!*\
+  !*** ./src/components/FormInput/forminput.js ***!
+  \***********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _forminput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./forminput.css */ "./src/components/FormInput/forminput.css");
+
+
+
+var FormInput = function FormInput(_ref) {
+  var title = _ref.title,
+      type = _ref.type;
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "form-field-header"
+  }, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
+    className: "form-field-input",
+    type: type
+  }));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (FormInput);
 
 /***/ }),
 
@@ -11282,6 +11316,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _addmoviemodal_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./addmoviemodal.css */ "./src/components/Modals/AddMovieModal/addmoviemodal.css");
+/* harmony import */ var _FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../FormInput/forminput */ "./src/components/FormInput/forminput.js");
+
 
 
 
@@ -11298,47 +11334,40 @@ var AddMovieModal = function AddMovieModal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "close",
     onClick: onClose
-  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    action: "/",
+    method: "post",
     className: "modal-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: "add-movie-header"
-  }, "Add movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "TITLE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }, "Add movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "TITLE",
     type: "text"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "RELEASE DATE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "RELEASE DATE",
     type: "date"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "MOVIE URL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "MOVIE URL",
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-field-header"
   }, "GENRE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     className: "form-field-input"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Drama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Horror")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "Overview"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Drama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Horror")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "OVERVIEW",
     type: "text"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "RUNTIME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "RUNTIME",
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     className: "reset-button",
-    type: "button"
-  }, "RESET"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "reset",
+    value: "RESET"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "submit-button",
-    type: "button"
+    type: "submit"
   }, "SUBMIT"))));
 };
 
@@ -11366,10 +11395,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var DeleteMovieModal = function DeleteMovieModal(_ref) {
-  var show = _ref.show,
+  var isShown = _ref.isShown,
       onClose = _ref.onClose;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_modal__WEBPACK_IMPORTED_MODULE_1___default()), {
-    isOpen: show,
+    isOpen: isShown,
     onRequestClose: onClose,
     contentLabel: "Example Modal",
     appElement: document.getElementById('app'),
@@ -11382,7 +11411,7 @@ var DeleteMovieModal = function DeleteMovieModal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: "delete-movie-header"
   }, "DELETE movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", {
-    className: "delete-movie-sub-header"
+    className: "delete-movie-content"
   }, "Are you sure you want to delete this movie?"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-buttons"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
@@ -11410,15 +11439,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-modal */ "./node_modules/react-modal/lib/index.js");
 /* harmony import */ var react_modal__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_modal__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _editmoviemodal_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./editmoviemodal.css */ "./src/components/Modals/EditMovieModal/editmoviemodal.css");
+/* harmony import */ var _FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../FormInput/forminput */ "./src/components/FormInput/forminput.js");
+
 
 
 
 
 var EditMovieModal = function EditMovieModal(_ref) {
-  var show = _ref.show,
+  var isShown = _ref.isShown,
       onClose = _ref.onClose;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement((react_modal__WEBPACK_IMPORTED_MODULE_1___default()), {
-    isOpen: show,
+    isOpen: isShown,
     onRequestClose: onClose,
     contentLabel: "Edit Modal",
     appElement: document.getElementById('app'),
@@ -11426,45 +11457,38 @@ var EditMovieModal = function EditMovieModal(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "close",
     onClick: onClose
-  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+  }, "\xD7"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("form", {
+    action: "/",
+    method: "post",
     className: "modal-content"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h2", {
     className: "edit-movie-header"
-  }, "Edit movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "TITLE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }, "Edit movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "TITLE",
     type: "text"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "RELEASE DATE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "RELEASE DATE",
     type: "date"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "MOVIE URL"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "MOVIE URL",
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-field-header"
   }, "GENRE"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("select", {
     className: "form-field-input"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Drama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Horror")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "OVERVIEW"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Comedy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Drama"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("option", null, "Horror")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "OVERVIEW",
     type: "text"
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    className: "form-field-header"
-  }, "RUNTIME"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
-    className: "form-field-input",
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_FormInput_forminput__WEBPACK_IMPORTED_MODULE_3__.default, {
+    title: "RUNTIME",
     type: "text"
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "form-buttons"
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("input", {
     className: "reset-button",
-    type: "button"
-  }, "RESET"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
+    type: "reset",
+    value: "RESET"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("button", {
     className: "submit-button",
     type: "button"
   }, "SUBMIT"))));
@@ -11562,6 +11586,13 @@ var MovieCard = function MovieCard(_ref) {
     });
   };
 
+  var options = [{
+    title: 'Edit',
+    callback: toggleEdit
+  }, {
+    title: 'Delete',
+    callback: toggleDelete
+  }];
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "movie-card"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -11577,17 +11608,16 @@ var MovieCard = function MovieCard(_ref) {
     alt: "more"
   }), showMenu && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ContextualMenu_contextMenu__WEBPACK_IMPORTED_MODULE_2__.default, {
     className: "context-menu",
-    toggleEdit: toggleEdit,
-    toggleDelete: toggleDelete
+    options: options
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "image-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, year)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "description"
-  }, description), deleteShowModal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_5__.default, {
-    show: deleteShowModal,
+  }, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_5__.default, {
+    isShown: deleteShowModal,
     onClose: toggleDelete
-  }), editShowModal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_6__.default, {
-    show: editShowModal,
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_6__.default, {
+    isShown: editShowModal,
     onClose: toggleEdit
   }));
 };
@@ -11927,10 +11957,10 @@ ___CSS_LOADER_EXPORT___.push([module.id, ".content-layout {\n    display: flex;\
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextualmenu.css":
-/*!************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextualmenu.css ***!
-  \************************************************************************************************/
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextmenu.css":
+/*!*********************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextmenu.css ***!
+  \*********************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -11947,7 +11977,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".context-menu {\n    width: 120px;\n    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);\n    position: absolute;\n    background-color: #424242;\n    z-index: 10000;\n}\n\n.menu-options {\n    list-style: none;\n    padding: 10px 0;\n}\n\n.menu-option {\n    font-weight: 500;\n    font-size: 14px;\n    padding: 10px 40px 10px 20px;\n    cursor: pointer;\n}\n\n.menu:hover {\n     background: rgba(0, 0, 0, 0.2);\n }\n", "",{"version":3,"sources":["webpack://./src/components/ContextualMenu/contextualmenu.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,4CAA4C;IAC5C,kBAAkB;IAClB,yBAAyB;IACzB,cAAc;AAClB;;AAEA;IACI,gBAAgB;IAChB,eAAe;AACnB;;AAEA;IACI,gBAAgB;IAChB,eAAe;IACf,4BAA4B;IAC5B,eAAe;AACnB;;AAEA;KACK,8BAA8B;CAClC","sourcesContent":[".context-menu {\n    width: 120px;\n    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);\n    position: absolute;\n    background-color: #424242;\n    z-index: 10000;\n}\n\n.menu-options {\n    list-style: none;\n    padding: 10px 0;\n}\n\n.menu-option {\n    font-weight: 500;\n    font-size: 14px;\n    padding: 10px 40px 10px 20px;\n    cursor: pointer;\n}\n\n.menu:hover {\n     background: rgba(0, 0, 0, 0.2);\n }\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".context-menu {\n    width: 120px;\n    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);\n    position: absolute;\n    background-color: #424242;\n    z-index: 10000;\n}\n\n.menu-options {\n    display: flex;\n    flex-direction: column;\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\n.menu-option {\n    font-weight: 500;\n    font-size: 14px;\n    cursor: pointer;\n}\n\n.menu:hover {\n     background: rgba(0, 0, 0, 0.2);\n }\n\n.context-button {\n    background-color: #555;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    width: 100%;\n    height: 50px;\n    border: 1px solid #313131;\n}\n", "",{"version":3,"sources":["webpack://./src/components/ContextualMenu/contextmenu.css"],"names":[],"mappings":"AAAA;IACI,YAAY;IACZ,4CAA4C;IAC5C,kBAAkB;IAClB,yBAAyB;IACzB,cAAc;AAClB;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,gBAAgB;IAChB,UAAU;IACV,SAAS;AACb;;AAEA;IACI,gBAAgB;IAChB,eAAe;IACf,eAAe;AACnB;;AAEA;KACK,8BAA8B;CAClC;;AAED;IACI,sBAAsB;IACtB,YAAY;IACZ,kBAAkB;IAClB,qBAAqB;IACrB,qBAAqB;IACrB,eAAe;IACf,WAAW;IACX,YAAY;IACZ,yBAAyB;AAC7B","sourcesContent":[".context-menu {\n    width: 120px;\n    box-shadow: 0 4px 5px 3px rgba(0, 0, 0, 0.2);\n    position: absolute;\n    background-color: #424242;\n    z-index: 10000;\n}\n\n.menu-options {\n    display: flex;\n    flex-direction: column;\n    list-style: none;\n    padding: 0;\n    margin: 0;\n}\n\n.menu-option {\n    font-weight: 500;\n    font-size: 14px;\n    cursor: pointer;\n}\n\n.menu:hover {\n     background: rgba(0, 0, 0, 0.2);\n }\n\n.context-button {\n    background-color: #555;\n    color: white;\n    text-align: center;\n    text-decoration: none;\n    display: inline-block;\n    font-size: 16px;\n    width: 100%;\n    height: 50px;\n    border: 1px solid #313131;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -11975,6 +12005,33 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
 ___CSS_LOADER_EXPORT___.push([module.id, ".footer {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    color: #f65261;\n    font-size: 25px;\n    font-family: Helvetica, serif;\n    margin-top: 40px;\n    background-color: #313131;\n    padding: 10px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/FooterLayout/footer.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,mBAAmB;IACnB,uBAAuB;IACvB,cAAc;IACd,eAAe;IACf,6BAA6B;IAC7B,gBAAgB;IAChB,yBAAyB;IACzB,aAAa;AACjB","sourcesContent":[".footer {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    color: #f65261;\n    font-size: 25px;\n    font-family: Helvetica, serif;\n    margin-top: 40px;\n    background-color: #313131;\n    padding: 10px;\n}\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/FormInput/forminput.css":
+/*!**************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/FormInput/forminput.css ***!
+  \**************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/FormInput/forminput.css"],"names":[],"mappings":"AAAA;IACI,yBAAyB;IACzB,gBAAgB;IAChB,cAAc;IACd,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB","sourcesContent":[".form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12109,7 +12166,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".delete-movie-modal {\n    position: absolute;\n    top: 35%;\n    left: 45%;\n    right: auto;\n    bottom: auto;\n    /*margin-right: -50%;*/\n    width: 30%;\n    transform: translate(-40%, -10%);\n    background-color: #424242;\n}\n\n.modal-content {\n    display: flex;\n    flex-direction: column;\n    margin: 10px 50px;\n}\n\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    align-self: flex-end;\n    margin-right: 9px;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n\n.delete-movie-header {\n    color: white;\n    text-transform: uppercase;\n    font-family: Helvetica sans-serif;\n}\n\n.delete-movie-sub-header {\n    color: white;\n    font-family: Helvetica sans-serif;\n}\n\n.form-buttons {\n    margin-top: 10px;\n    display: flex;\n    justify-content: flex-end;\n    height: 40px;\n}\n\n.submit-button {\n    margin-left: 20px;\n    color: white;\n    background-color: #f65261;\n    font-size: 16px;\n    border-radius: 5px;\n    border: 0 solid;\n    width: 120px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Modals/DeleteMovieModal/deletemoviemodal.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,WAAW;IACX,YAAY;IACZ,sBAAsB;IACtB,UAAU;IACV,gCAAgC;IAChC,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,eAAe;IACf,iBAAiB;IACjB,oBAAoB;IACpB,iBAAiB;AACrB;;AAEA;;IAEI,YAAY;IACZ,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,gBAAgB;IAChB,cAAc;IACd,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,yBAAyB;IACzB,iCAAiC;AACrC;;AAEA;IACI,YAAY;IACZ,iCAAiC;AACrC;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,yBAAyB;IACzB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,eAAe;IACf,kBAAkB;IAClB,eAAe;IACf,YAAY;AAChB","sourcesContent":[".delete-movie-modal {\n    position: absolute;\n    top: 35%;\n    left: 45%;\n    right: auto;\n    bottom: auto;\n    /*margin-right: -50%;*/\n    width: 30%;\n    transform: translate(-40%, -10%);\n    background-color: #424242;\n}\n\n.modal-content {\n    display: flex;\n    flex-direction: column;\n    margin: 10px 50px;\n}\n\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    align-self: flex-end;\n    margin-right: 9px;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n\n.delete-movie-header {\n    color: white;\n    text-transform: uppercase;\n    font-family: Helvetica sans-serif;\n}\n\n.delete-movie-sub-header {\n    color: white;\n    font-family: Helvetica sans-serif;\n}\n\n.form-buttons {\n    margin-top: 10px;\n    display: flex;\n    justify-content: flex-end;\n    height: 40px;\n}\n\n.submit-button {\n    margin-left: 20px;\n    color: white;\n    background-color: #f65261;\n    font-size: 16px;\n    border-radius: 5px;\n    border: 0 solid;\n    width: 120px;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".delete-movie-modal {\n    position: absolute;\n    top: 35%;\n    left: 45%;\n    right: auto;\n    bottom: auto;\n    /*margin-right: -50%;*/\n    width: 30%;\n    transform: translate(-40%, -10%);\n    background-color: #424242;\n}\n\n.modal-content {\n    display: flex;\n    flex-direction: column;\n    margin: 10px 50px;\n}\n\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    align-self: flex-end;\n    margin-right: 9px;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n\n.delete-movie-header {\n    color: white;\n    text-transform: uppercase;\n    font-family: Helvetica sans-serif;\n}\n\n.delete-movie-content {\n    color: white;\n    font-family: Helvetica sans-serif;\n}\n\n.form-buttons {\n    margin-top: 10px;\n    display: flex;\n    justify-content: flex-end;\n    height: 40px;\n}\n\n.submit-button {\n    margin-left: 20px;\n    color: white;\n    background-color: #f65261;\n    font-size: 16px;\n    border-radius: 5px;\n    border: 0 solid;\n    width: 120px;\n}\n", "",{"version":3,"sources":["webpack://./src/components/Modals/DeleteMovieModal/deletemoviemodal.css"],"names":[],"mappings":"AAAA;IACI,kBAAkB;IAClB,QAAQ;IACR,SAAS;IACT,WAAW;IACX,YAAY;IACZ,sBAAsB;IACtB,UAAU;IACV,gCAAgC;IAChC,yBAAyB;AAC7B;;AAEA;IACI,aAAa;IACb,sBAAsB;IACtB,iBAAiB;AACrB;;AAEA;IACI,WAAW;IACX,YAAY;IACZ,eAAe;IACf,iBAAiB;IACjB,oBAAoB;IACpB,iBAAiB;AACrB;;AAEA;;IAEI,YAAY;IACZ,qBAAqB;IACrB,eAAe;AACnB;;AAEA;IACI,yBAAyB;IACzB,gBAAgB;IAChB,cAAc;IACd,eAAe;AACnB;;AAEA;IACI,YAAY;AAChB;;AAEA;IACI,YAAY;IACZ,yBAAyB;IACzB,iCAAiC;AACrC;;AAEA;IACI,YAAY;IACZ,iCAAiC;AACrC;;AAEA;IACI,gBAAgB;IAChB,aAAa;IACb,yBAAyB;IACzB,YAAY;AAChB;;AAEA;IACI,iBAAiB;IACjB,YAAY;IACZ,yBAAyB;IACzB,eAAe;IACf,kBAAkB;IAClB,eAAe;IACf,YAAY;AAChB","sourcesContent":[".delete-movie-modal {\n    position: absolute;\n    top: 35%;\n    left: 45%;\n    right: auto;\n    bottom: auto;\n    /*margin-right: -50%;*/\n    width: 30%;\n    transform: translate(-40%, -10%);\n    background-color: #424242;\n}\n\n.modal-content {\n    display: flex;\n    flex-direction: column;\n    margin: 10px 50px;\n}\n\n.close {\n    color: #aaa;\n    float: right;\n    font-size: 28px;\n    font-weight: bold;\n    align-self: flex-end;\n    margin-right: 9px;\n}\n\n.close:hover,\n.close:focus {\n    color: black;\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.form-field-header{\n    text-transform: uppercase;\n    margin-top: 10px;\n    color: #f65261;\n    font-size: 20px;\n}\n\n.form-field-input {\n    height: 30px;\n}\n\n.delete-movie-header {\n    color: white;\n    text-transform: uppercase;\n    font-family: Helvetica sans-serif;\n}\n\n.delete-movie-content {\n    color: white;\n    font-family: Helvetica sans-serif;\n}\n\n.form-buttons {\n    margin-top: 10px;\n    display: flex;\n    justify-content: flex-end;\n    height: 40px;\n}\n\n.submit-button {\n    margin-left: 20px;\n    color: white;\n    background-color: #f65261;\n    font-size: 16px;\n    border-radius: 5px;\n    border: 0 solid;\n    width: 120px;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12325,7 +12382,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "body {\n    margin: 0;\n    background-color: #555555;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,yBAAyB;AAC7B","sourcesContent":["body {\n    margin: 0;\n    background-color: #555555;\n}\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, "body {\n    margin: 0;\n    background-color: #555;\n}\n", "",{"version":3,"sources":["webpack://./src/index.css"],"names":[],"mappings":"AAAA;IACI,SAAS;IACT,sBAAsB;AAC1B","sourcesContent":["body {\n    margin: 0;\n    background-color: #555;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12377,10 +12434,10 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 /***/ }),
 
-/***/ "./src/components/ContextualMenu/contextualmenu.css":
-/*!**********************************************************!*\
-  !*** ./src/components/ContextualMenu/contextualmenu.css ***!
-  \**********************************************************/
+/***/ "./src/components/ContextualMenu/contextmenu.css":
+/*!*******************************************************!*\
+  !*** ./src/components/ContextualMenu/contextmenu.css ***!
+  \*******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -12390,7 +12447,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_contextualmenu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./contextualmenu.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextualmenu.css");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_contextmenu_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./contextmenu.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/ContextualMenu/contextmenu.css");
 
             
 
@@ -12399,11 +12456,11 @@ var options = {};
 options.insert = "head";
 options.singleton = false;
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_contextualmenu_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_contextmenu_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_contextualmenu_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_contextmenu_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
@@ -12434,6 +12491,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_footer_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./src/components/FormInput/forminput.css":
+/*!************************************************!*\
+  !*** ./src/components/FormInput/forminput.css ***!
+  \************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_forminput_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./forminput.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/FormInput/forminput.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_forminput_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_forminput_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
