@@ -8,16 +8,13 @@ import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
 
 const MovieCard = ({ title, description, year }) => {
-  const [menuState, setMenuState] = useState({
-    xPos: '0px',
-    yPos: '0px',
-    showMenu: false,
-  });
+  
+  const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
   
-  const handleOffMenuClick = (e) => {
-    if (menuState.showMenu) setMenuState({ showMenu: false });
+  const handleOffMenuClick = () => {
+    if (showMenu) setShowMenuState(false);
   };
   
   useEffect(() => {
@@ -28,16 +25,7 @@ const MovieCard = ({ title, description, year }) => {
     };
   });
   
-  const showContextMenu = (e) => {
-    e.preventDefault();
-    
-    setMenuState({
-      xPos: `${e.pageX}px`,
-      yPos: `${e.pageY}px`,
-      showMenu: true,
-    });
-  };
-  
+  const toggleMenu = () => setShowMenuState((prevValue) => !prevValue);
   const toggleEdit = () => setEditShowModal((prevValue) => !prevValue);
   const toggleDelete = () => setDeleteShowModal((prevValue) => !prevValue);
   
@@ -45,7 +33,8 @@ const MovieCard = ({ title, description, year }) => {
     <div className="movie-card">
       <div className="image-container">
         <img className="movie-image" src="https://i.pinimg.com/originals/f3/a2/0d/f3a20d7df90d3b4a4167a419a0566ff3.jpg" alt={title} />
-        <img onClick={showContextMenu} className="more-icon" src={more} alt="more" />
+        <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
+        { showMenu && (<ContextMenu className="context-menu" toggleEdit={toggleEdit} toggleDelete={toggleDelete} />) }
       </div>
       <div className="image-footer">
         <h3>{title}</h3>
@@ -55,9 +44,6 @@ const MovieCard = ({ title, description, year }) => {
       {/* TODO: is it ok to have it here? */}
       { deleteShowModal && <DeleteMovieModal show={deleteShowModal} onClose={toggleDelete} /> }
       { editShowModal && <EditMovieModal show={editShowModal} onClose={toggleEdit} />}
-      { menuState.showMenu && (<ContextMenu xPos={menuState.xPos} yPos={menuState.yPos}
-                                            toggleEdit={toggleEdit} toggleDelete={toggleDelete}/>)
-      }
     </div>
   );
 };
