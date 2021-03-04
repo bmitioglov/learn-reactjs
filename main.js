@@ -11098,15 +11098,9 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ContextMenu = function ContextMenu(_ref) {
-  var xPos = _ref.xPos,
-      yPos = _ref.yPos,
-      toggleEdit = _ref.toggleEdit,
+  var toggleEdit = _ref.toggleEdit,
       toggleDelete = _ref.toggleDelete;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
-    style: {
-      top: yPos,
-      left: xPos
-    },
     className: "context-menu"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("ul", {
     className: "menu-options"
@@ -11524,14 +11518,10 @@ var MovieCard = function MovieCard(_ref) {
       description = _ref.description,
       year = _ref.year;
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
-    xPos: '0px',
-    yPos: '0px',
-    showMenu: false
-  }),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
-      menuState = _useState2[0],
-      setMenuState = _useState2[1];
+      showMenu = _useState2[0],
+      setShowMenuState = _useState2[1];
 
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState4 = _slicedToArray(_useState3, 2),
@@ -11543,10 +11533,8 @@ var MovieCard = function MovieCard(_ref) {
       deleteShowModal = _useState6[0],
       setDeleteShowModal = _useState6[1];
 
-  var handleOffMenuClick = function handleOffMenuClick(e) {
-    if (menuState.showMenu) setMenuState({
-      showMenu: false
-    });
+  var handleOffMenuClick = function handleOffMenuClick() {
+    if (showMenu) setShowMenuState(false);
   };
 
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
@@ -11556,12 +11544,9 @@ var MovieCard = function MovieCard(_ref) {
     };
   });
 
-  var showContextMenu = function showContextMenu(e) {
-    e.preventDefault();
-    setMenuState({
-      xPos: "".concat(e.pageX, "px"),
-      yPos: "".concat(e.pageY, "px"),
-      showMenu: true
+  var toggleMenu = function toggleMenu() {
+    return setShowMenuState(function (prevValue) {
+      return !prevValue;
     });
   };
 
@@ -11586,10 +11571,14 @@ var MovieCard = function MovieCard(_ref) {
     src: "https://i.pinimg.com/originals/f3/a2/0d/f3a20d7df90d3b4a4167a419a0566ff3.jpg",
     alt: title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
-    onClick: showContextMenu,
+    onClick: toggleMenu,
     className: "more-icon",
     src: _img_more_svg__WEBPACK_IMPORTED_MODULE_3__.default,
     alt: "more"
+  }), showMenu && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ContextualMenu_contextMenu__WEBPACK_IMPORTED_MODULE_2__.default, {
+    className: "context-menu",
+    toggleEdit: toggleEdit,
+    toggleDelete: toggleDelete
   })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "image-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, year)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
@@ -11600,11 +11589,6 @@ var MovieCard = function MovieCard(_ref) {
   }), editShowModal && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_6__.default, {
     show: editShowModal,
     onClose: toggleEdit
-  }), menuState.showMenu && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_ContextualMenu_contextMenu__WEBPACK_IMPORTED_MODULE_2__.default, {
-    xPos: menuState.xPos,
-    yPos: menuState.yPos,
-    toggleEdit: toggleEdit,
-    toggleDelete: toggleDelete
   }));
 };
 
@@ -12179,7 +12163,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n\n", "",{"version":3,"sources":["webpack://./src/components/MovieCard/moviecard.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,cAAc;IACd,yBAAyB;IACzB,gBAAgB;IAChB,2BAA2B;AAC/B;;AAEA;IACI,YAAY;IACZ,cAAc;AAClB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,UAAU;IACV,YAAY;IACZ,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,cAAc;AAClB;;AAEA;IACI,cAAc;IACd,eAAe;IACf,WAAW;AACf","sourcesContent":[".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n", "",{"version":3,"sources":["webpack://./src/components/MovieCard/moviecard.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,cAAc;IACd,yBAAyB;IACzB,gBAAgB;IAChB,2BAA2B;AAC/B;;AAEA;IACI,YAAY;IACZ,cAAc;AAClB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,UAAU;IACV,YAAY;IACZ,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,cAAc;AAClB;;AAEA;IACI,cAAc;IACd,eAAe;IACf,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;AACf","sourcesContent":[".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
