@@ -1,0 +1,10 @@
+.form-field-header{
+    text-transform: uppercase;
+    margin-top: 10px;
+    color: #f65261;
+    font-size: 20px;
+}
+
+.form-field-input {
+    height: 30px;
+}

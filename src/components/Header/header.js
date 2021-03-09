@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './header.css';
+import AddMovieModal from '../Modals/AddMovieModal/addmoviemodal';
 
-const Header = () => (
-  <div className="header">
-    <p>
-      <b>netflix</b>
-      roulette
-    </p>
-    <button className="add-movie-button" type="button">+ Add Movie</button>
-  </div>
-);
+const Header = () => {
+  const [show, setShow] = useState(false);
+  
+  const toggleAddModal = () => setShow((prevState) => !prevState);
+
+  return (
+    <>
+      <div className="header">
+        <p>
+          <b>netflix</b>
+          roulette
+        </p>
+        <button className="add-movie-button" type="button" onClick={toggleAddModal}>+ Add Movie</button>
+      </div>
+      {/* TODO: is it ok to add it here? */}
+      <AddMovieModal show={show} onClose={toggleAddModal} />
+    </>
+  );
+};
 
 export default Header;

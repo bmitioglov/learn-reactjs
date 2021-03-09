@@ -17,5 +17,7 @@ rules: {
   "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
   "no-use-before-define": "off",
   "@typescript-eslint/no-use-before-define": [ "error" ],
-  "indent": 2
+  "indent": 2,
+  "no-trailing-spaces": "off",
+  "max-len": "off",
 }
