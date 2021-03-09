@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Footer from './components/FooterLayout/footer';
@@ -16,6 +16,19 @@ const App = () => {
   const [showMovieHeader, setShowMovieHeader] = useState(false);
   
   const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
+  
+  // custom hook
+  const useDocumentTitle = (title) => {
+    useEffect(
+      () => {
+        document.title = title;
+      },
+      [title],
+    );
+  };
+  
+  const title = 'Netflix Roulette';
+  useDocumentTitle(title);
   
   return (
     <Content>
