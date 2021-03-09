@@ -1,0 +1,55 @@
+.details-background {
+    background-image: url('../../img/img_9.png');
+    margin-bottom: 20px;
+}
+
+.details-layout {
+    margin: 0 50px 25px;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    color: #f65261;
+    font-size: 25px;
+    font-family: Helvetica, serif;
+    align-items: center;
+}
+
+.image-and-details {
+    color: white;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-details {
+    margin: 0 50px;
+}
+
+.year-and-duration {
+    display: flex;
+}
+
+.detail-with-rating {
+    display: flex;
+    align-items: center;
+}
+
+.rating {
+    margin-left: 10px;
+    font-size: 25px;
+}
+
+.duration {
+    margin-left: 10px;
+}
+
+.description {
+    margin-top: 10px;
+}
+
+.search-icon {
+    height: 30px;
+    width: 30px;
+    color: #f65261;
+}

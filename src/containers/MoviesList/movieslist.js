@@ -3,7 +3,7 @@ import MovieCard from '../../components/MovieCard/moviecard';
 import './movieslist.css';
 import { movies } from './moviessource';
 
-const MoviesList = () => (
+const MoviesList = ({ onMovieClick }) => (
   <div className="movies-list">
     {movies.map((item) => (
       <MovieCard
@@ -12,9 +12,10 @@ const MoviesList = () => (
         title={item.title}
         description={item.description}
         year={2020}
+        onClick={onMovieClick}
       />
     ))}
   </div>
 );
 
-export default MoviesList;
+export default React.memo(MoviesList);
