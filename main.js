@@ -165,6 +165,50 @@ module.exports = function cssWithMappingToString(item) {
 
 /***/ }),
 
+/***/ "./node_modules/css-loader/dist/runtime/getUrl.js":
+/*!********************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/getUrl.js ***!
+  \********************************************************/
+/***/ ((module) => {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== "string") {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, "\\n"), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+
 /***/ "./node_modules/exenv/index.js":
 /*!*************************************!*\
   !*** ./node_modules/exenv/index.js ***!
@@ -11025,6 +11069,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_SearchResultCounter_searchresultcounter__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/SearchResultCounter/searchresultcounter */ "./src/components/SearchResultCounter/searchresultcounter.js");
 /* harmony import */ var _containers_ErrorBoundary_errorboundary__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./containers/ErrorBoundary/errorboundary */ "./src/containers/ErrorBoundary/errorboundary.js");
 /* harmony import */ var _components_MoviesLayout_movieslayout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./components/MoviesLayout/movieslayout */ "./src/components/MoviesLayout/movieslayout.js");
+/* harmony import */ var _components_MovieDetailsHeader_moviedetailsheader__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./components/MovieDetailsHeader/moviedetailsheader */ "./src/components/MovieDetailsHeader/moviedetailsheader.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
 
 
 
@@ -11039,9 +11097,30 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var App = function App() {
-  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ContentLayout_contentlayout__WEBPACK_IMPORTED_MODULE_8__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Header_header__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Search_search__WEBPACK_IMPORTED_MODULE_7__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MenuPanel_menupanel__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_SearchResultCounter_searchresultcounter__WEBPACK_IMPORTED_MODULE_9__.default, {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showMovieHeader = _useState2[0],
+      setShowMovieHeader = _useState2[1];
+
+  var toggleMovieHeader = (0,react__WEBPACK_IMPORTED_MODULE_0__.useCallback)(function () {
+    return setShowMovieHeader(function (prevValue) {
+      return !prevValue;
+    });
+  }, []); // custom hook
+
+  var useDocumentTitle = function useDocumentTitle(title) {
+    (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+      document.title = title;
+    }, [title]);
+  };
+
+  var title = 'Netflix Roulette';
+  useDocumentTitle(title);
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_ContentLayout_contentlayout__WEBPACK_IMPORTED_MODULE_8__.default, null, showMovieHeader ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MovieDetailsHeader_moviedetailsheader__WEBPACK_IMPORTED_MODULE_12__.default, null) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Header_header__WEBPACK_IMPORTED_MODULE_4__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_Search_search__WEBPACK_IMPORTED_MODULE_7__.default, null)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MenuPanel_menupanel__WEBPACK_IMPORTED_MODULE_5__.default, null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_SearchResultCounter_searchresultcounter__WEBPACK_IMPORTED_MODULE_9__.default, {
     searchResult: 30
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MoviesLayout_movieslayout__WEBPACK_IMPORTED_MODULE_11__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_containers_ErrorBoundary_errorboundary__WEBPACK_IMPORTED_MODULE_10__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_containers_MoviesList_movieslist__WEBPACK_IMPORTED_MODULE_6__.default, null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_FooterLayout_footer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "netflix"), "roulette")));
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_MoviesLayout_movieslayout__WEBPACK_IMPORTED_MODULE_11__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_containers_ErrorBoundary_errorboundary__WEBPACK_IMPORTED_MODULE_10__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_containers_MoviesList_movieslist__WEBPACK_IMPORTED_MODULE_6__.default, {
+    onMovieClick: toggleMovieHeader
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_components_FooterLayout_footer__WEBPACK_IMPORTED_MODULE_3__.default, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "netflix"), "roulette")));
 };
 
 react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(App, null), document.getElementById('app'));
@@ -11514,9 +11593,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _ContextualMenu_contextMenu__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../ContextualMenu/contextMenu */ "./src/components/ContextualMenu/contextMenu.js");
 /* harmony import */ var _img_more_svg__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/more.svg */ "./src/img/more.svg");
-/* harmony import */ var _moviecard_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./moviecard.css */ "./src/components/MovieCard/moviecard.css");
-/* harmony import */ var _Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../Modals/DeleteMovieModal/deletemoviemodal */ "./src/components/Modals/DeleteMovieModal/deletemoviemodal.js");
-/* harmony import */ var _Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Modals/EditMovieModal/editmoviemodal */ "./src/components/Modals/EditMovieModal/editmoviemodal.js");
+/* harmony import */ var _img_img_png__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../img/img.png */ "./src/img/img.png");
+/* harmony import */ var _moviecard_css__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./moviecard.css */ "./src/components/MovieCard/moviecard.css");
+/* harmony import */ var _Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../Modals/DeleteMovieModal/deletemoviemodal */ "./src/components/Modals/DeleteMovieModal/deletemoviemodal.js");
+/* harmony import */ var _Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../Modals/EditMovieModal/editmoviemodal */ "./src/components/Modals/EditMovieModal/editmoviemodal.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -11537,10 +11617,12 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var MovieCard = function MovieCard(_ref) {
   var title = _ref.title,
       description = _ref.description,
-      year = _ref.year;
+      year = _ref.year,
+      onClick = _ref.onClick;
 
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
       _useState2 = _slicedToArray(_useState, 2),
@@ -11598,8 +11680,9 @@ var MovieCard = function MovieCard(_ref) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "image-container"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    onClick: onClick,
     className: "movie-image",
-    src: "https://i.pinimg.com/originals/f3/a2/0d/f3a20d7df90d3b4a4167a419a0566ff3.jpg",
+    src: _img_img_png__WEBPACK_IMPORTED_MODULE_4__.default,
     alt: title
   }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
     onClick: toggleMenu,
@@ -11613,10 +11696,10 @@ var MovieCard = function MovieCard(_ref) {
     className: "image-footer"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h3", null, title), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, year)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "description"
-  }, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_5__.default, {
+  }, description), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_DeleteMovieModal_deletemoviemodal__WEBPACK_IMPORTED_MODULE_6__.default, {
     isShown: deleteShowModal,
     onClose: toggleDelete
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_6__.default, {
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement(_Modals_EditMovieModal_editmoviemodal__WEBPACK_IMPORTED_MODULE_7__.default, {
     isShown: editShowModal,
     onClose: toggleEdit
   }));
@@ -11628,6 +11711,60 @@ MovieCard.propTypes = {
   year: (prop_types__WEBPACK_IMPORTED_MODULE_1___default().number.isRequired)
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MovieCard);
+
+/***/ }),
+
+/***/ "./src/components/MovieDetailsHeader/moviedetailsheader.js":
+/*!*****************************************************************!*\
+  !*** ./src/components/MovieDetailsHeader/moviedetailsheader.js ***!
+  \*****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _moviedetailsheader_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./moviedetailsheader.css */ "./src/components/MovieDetailsHeader/moviedetailsheader.css");
+/* harmony import */ var _img_search_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../img/search.svg */ "./src/img/search.svg");
+
+
+
+
+var MovieDetailsHeader = function MovieDetailsHeader() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "details-background"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "details-layout"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "details-header"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("b", null, "netflix"), "roulette"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "search-icon",
+    src: _img_search_svg__WEBPACK_IMPORTED_MODULE_2__.default,
+    alt: "more"
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "image-and-details"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("img", {
+    className: "movie-image",
+    src: "https://upload.wikimedia.org/wikipedia/en/3/3b/Pulp_Fiction_%281994%29_poster.jpg",
+    alt: "Movie title"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "card-details"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "detail-with-rating"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("h1", null, "Pulp Fiction"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", {
+    className: "rating"
+  }, "4.3")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("p", null, "Oscar winning movie"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "year-and-duration"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", null, "1994"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "duration"
+  }, "154 min")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
+    className: "description"
+  }, "Pulp Fiction is a 1994 American neo-noir black comedy crime film written and directed by Quentin Tarantino, who conceived it with Roger Avary. Starring John Travolta, Samuel L. Jackson, Bruce Willis, Tim Roth, Ving Rhames, and Uma Thurman, it tells several stories of criminal Los Angeles. The title refers to the pulp magazines and hardboiled crime novels popular during the mid-20th century, known for their graphic violence and punchy dialogue.")))));
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MovieDetailsHeader);
 
 /***/ }),
 
@@ -11872,7 +12009,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var MoviesList = function MoviesList() {
+var MoviesList = function MoviesList(_ref) {
+  var onMovieClick = _ref.onMovieClick;
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.createElement("div", {
     className: "movies-list"
   }, _moviessource__WEBPACK_IMPORTED_MODULE_3__.movies.map(function (item) {
@@ -11881,12 +12019,13 @@ var MoviesList = function MoviesList() {
       key: item.id,
       title: item.title,
       description: item.description,
-      year: 2020
+      year: 2020,
+      onClick: onMovieClick
     });
   }));
 };
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MoviesList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (/*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0__.memo(MoviesList));
 
 /***/ }),
 
@@ -12220,7 +12359,40 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n", "",{"version":3,"sources":["webpack://./src/components/MovieCard/moviecard.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,cAAc;IACd,yBAAyB;IACzB,gBAAgB;IAChB,2BAA2B;AAC/B;;AAEA;IACI,YAAY;IACZ,cAAc;AAClB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,UAAU;IACV,YAAY;IACZ,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,cAAc;AAClB;;AAEA;IACI,cAAc;IACd,eAAe;IACf,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;AACf","sourcesContent":[".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n"],"sourceRoot":""}]);
+___CSS_LOADER_EXPORT___.push([module.id, ".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n    cursor: pointer;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n", "",{"version":3,"sources":["webpack://./src/components/MovieCard/moviecard.css"],"names":[],"mappings":"AAAA;IACI,aAAa;IACb,sBAAsB;IACtB,6BAA6B;IAC7B,cAAc;IACd,yBAAyB;IACzB,gBAAgB;IAChB,2BAA2B;AAC/B;;AAEA;IACI,YAAY;IACZ,cAAc;IACd,eAAe;AACnB;;AAEA;IACI,aAAa;IACb,mBAAmB;IACnB,8BAA8B;AAClC;;AAEA;IACI,kBAAkB;AACtB;;AAEA;IACI,kBAAkB;IAClB,QAAQ;IACR,UAAU;IACV,YAAY;IACZ,WAAW;IACX,aAAa;AACjB;;AAEA;IACI,cAAc;IACd,cAAc;AAClB;;AAEA;IACI,cAAc;IACd,eAAe;IACf,WAAW;AACf;;AAEA;IACI,kBAAkB;IAClB,SAAS;IACT,WAAW;AACf","sourcesContent":[".movie-card {\n    display: flex;\n    flex-direction: column;\n    font-family: Helvetica, serif;\n    color: #ffffff;\n    text-transform: uppercase;\n    margin-top: 20px;\n    justify-content: flex-start;\n}\n\n.movie-image {\n    width: 330px;\n    display: block;\n    cursor: pointer;\n}\n\n.image-footer {\n    display: flex;\n    align-items: center;\n    justify-content: space-between;\n}\n\n.image-container {\n    position: relative;\n}\n\n.more-icon {\n    position: absolute;\n    top: 5px;\n    right: 5px;\n    height: 30px;\n    width: 30px;\n    display: none;\n}\n\n.movie-image:hover + .more-icon {\n    display: block;\n    color: #111111;\n}\n\n.more-icon:hover {\n    display: block;\n    cursor: pointer;\n    opacity: .5;\n}\n\n.context-menu {\n    position: absolute;\n    top: 15px;\n    right: 15px;\n}\n\n\n"],"sourceRoot":""}]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js!./src/components/MovieDetailsHeader/moviedetailsheader.css":
+/*!********************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/components/MovieDetailsHeader/moviedetailsheader.css ***!
+  \********************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/cssWithMappingToString.js */ "./node_modules/css-loader/dist/runtime/cssWithMappingToString.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/getUrl.js */ "./node_modules/css-loader/dist/runtime/getUrl.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _img_img_9_png__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../img/img_9.png */ "./src/img/img_9.png");
+// Imports
+
+
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_cssWithMappingToString_js__WEBPACK_IMPORTED_MODULE_0___default()));
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = _node_modules_css_loader_dist_runtime_getUrl_js__WEBPACK_IMPORTED_MODULE_2___default()(_img_img_9_png__WEBPACK_IMPORTED_MODULE_3__.default);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, ".details-background {\n    background-image: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\n    margin-bottom: 20px;\n}\n\n.details-layout {\n    margin: 0 50px 25px;\n}\n\n.details-header {\n    display: flex;\n    justify-content: space-between;\n    color: #f65261;\n    font-size: 25px;\n    font-family: Helvetica, serif;\n    align-items: center;\n}\n\n.image-and-details {\n    color: white;\n    display: flex;\n    flex-direction: row;\n}\n\n.card-details {\n    margin: 0 50px;\n}\n\n.year-and-duration {\n    display: flex;\n}\n\n.detail-with-rating {\n    display: flex;\n    align-items: center;\n}\n\n.rating {\n    margin-left: 10px;\n    font-size: 25px;\n}\n\n.duration {\n    margin-left: 10px;\n}\n\n.description {\n    margin-top: 10px;\n}\n\n.search-icon {\n    height: 30px;\n    width: 30px;\n    color: #f65261;\n}\n", "",{"version":3,"sources":["webpack://./src/components/MovieDetailsHeader/moviedetailsheader.css"],"names":[],"mappings":"AAAA;IACI,yDAA4C;IAC5C,mBAAmB;AACvB;;AAEA;IACI,mBAAmB;AACvB;;AAEA;IACI,aAAa;IACb,8BAA8B;IAC9B,cAAc;IACd,eAAe;IACf,6BAA6B;IAC7B,mBAAmB;AACvB;;AAEA;IACI,YAAY;IACZ,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,cAAc;AAClB;;AAEA;IACI,aAAa;AACjB;;AAEA;IACI,aAAa;IACb,mBAAmB;AACvB;;AAEA;IACI,iBAAiB;IACjB,eAAe;AACnB;;AAEA;IACI,iBAAiB;AACrB;;AAEA;IACI,gBAAgB;AACpB;;AAEA;IACI,YAAY;IACZ,WAAW;IACX,cAAc;AAClB","sourcesContent":[".details-background {\n    background-image: url('../../img/img_9.png');\n    margin-bottom: 20px;\n}\n\n.details-layout {\n    margin: 0 50px 25px;\n}\n\n.details-header {\n    display: flex;\n    justify-content: space-between;\n    color: #f65261;\n    font-size: 25px;\n    font-family: Helvetica, serif;\n    align-items: center;\n}\n\n.image-and-details {\n    color: white;\n    display: flex;\n    flex-direction: row;\n}\n\n.card-details {\n    margin: 0 50px;\n}\n\n.year-and-duration {\n    display: flex;\n}\n\n.detail-with-rating {\n    display: flex;\n    align-items: center;\n}\n\n.rating {\n    margin-left: 10px;\n    font-size: 25px;\n}\n\n.duration {\n    margin-left: 10px;\n}\n\n.description {\n    margin-top: 10px;\n}\n\n.search-icon {\n    height: 30px;\n    width: 30px;\n    color: #f65261;\n}\n"],"sourceRoot":""}]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -12389,6 +12561,36 @@ ___CSS_LOADER_EXPORT___.push([module.id, "body {\n    margin: 0;\n    background
 
 /***/ }),
 
+/***/ "./src/img/img.png":
+/*!*************************!*\
+  !*** ./src/img/img.png ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "db1d1fb0e85d1ff1a3260e10ad01b599.png");
+
+/***/ }),
+
+/***/ "./src/img/img_9.png":
+/*!***************************!*\
+  !*** ./src/img/img_9.png ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "83a3f89012649a34eade99786f0b2624.png");
+
+/***/ }),
+
 /***/ "./src/img/more.svg":
 /*!**************************!*\
   !*** ./src/img/more.svg ***!
@@ -12400,7 +12602,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "e0b9d0118a203146eba8b91afa3e0060.svg");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "02d793fd14bc84bd06406dcb17739f53.svg");
+
+/***/ }),
+
+/***/ "./src/img/search.svg":
+/*!****************************!*\
+  !*** ./src/img/search.svg ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (__webpack_require__.p + "3372399ae1f68be16bc5ab30a54712df.svg");
 
 /***/ }),
 
@@ -12731,6 +12948,36 @@ var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_moviecard_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
+
+/***/ }),
+
+/***/ "./src/components/MovieDetailsHeader/moviedetailsheader.css":
+/*!******************************************************************!*\
+  !*** ./src/components/MovieDetailsHeader/moviedetailsheader.css ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_moviedetailsheader_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../../node_modules/css-loader/dist/cjs.js!./moviedetailsheader.css */ "./node_modules/css-loader/dist/cjs.js!./src/components/MovieDetailsHeader/moviedetailsheader.css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_moviedetailsheader_css__WEBPACK_IMPORTED_MODULE_1__.default, options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_moviedetailsheader_css__WEBPACK_IMPORTED_MODULE_1__.default.locals || {});
 
 /***/ }),
 
