@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Footer from './components/FooterLayout/footer';
@@ -10,27 +10,46 @@ import Content from './components/ContentLayout/contentlayout';
 import SearchResult from './components/SearchResultCounter/searchresultcounter';
 import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
 import MoviesLayout from './components/MoviesLayout/movieslayout';
+import MovieDetails from './components/MovieDetails/moviedetails';
+import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
 
-const App = () => (
-  <Content>
-    <Header />
-    <Search />
-    <MenuPanel />
-    <SearchResult searchResult={30} />
-    <MoviesLayout>
-      <ErrorBoundary>
-        <MoviesList />
-      </ErrorBoundary>
-    </MoviesLayout>
-    <Footer>
-      <p>
-        <b>
-          netflix
-        </b>
-        roulette
-      </p>
-    </Footer>
-  </Content>
-);
+const App = () => {
+  const [showMovieHeader, setShowMovieHeader] = useState(false);
+  
+  const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
+  
+  const title = 'Netflix Roulette';
+  useDocumentTitle(title);
+  
+  return (
+    <Content>
+      { showMovieHeader
+        ? (
+          <MovieDetails />
+        )
+        : (
+          <>
+            <Header />
+            <Search />
+          </>
+        )}
+      <MenuPanel />
+      <SearchResult searchResult={30} />
+      <MoviesLayout>
+        <ErrorBoundary>
+          <MoviesList onMovieClick={toggleMovieHeader} />
+        </ErrorBoundary>
+      </MoviesLayout>
+      <Footer>
+        <p>
+          <b>
+            netflix
+          </b>
+          roulette
+        </p>
+      </Footer>
+    </Content>
+  );
+};
 
 ReactDOM.render(<App />, document.getElementById('app'));
