@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './moviedetailsheader.css';
+import './moviedetails.css';
 import search from '../../img/search.svg';
 
-const MovieDetailsHeader = () => {
+const MovieDetails = () => {
   return (
     <div className="details-background">
       <div className="details-layout">
@@ -40,4 +40,4 @@ const MovieDetailsHeader = () => {
   );
 };
 
-export default MovieDetailsHeader;
+export default MovieDetails;

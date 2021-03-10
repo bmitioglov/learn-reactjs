@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import Footer from './components/FooterLayout/footer';
@@ -10,22 +10,13 @@ import Content from './components/ContentLayout/contentlayout';
 import SearchResult from './components/SearchResultCounter/searchresultcounter';
 import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
 import MoviesLayout from './components/MoviesLayout/movieslayout';
-import MovieDetailsHeader from './components/MovieDetailsHeader/moviedetailsheader';
+import MovieDetails from './components/MovieDetails/moviedetails';
+import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
 
 const App = () => {
   const [showMovieHeader, setShowMovieHeader] = useState(false);
   
   const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
-  
-  // custom hook
-  const useDocumentTitle = (title) => {
-    useEffect(
-      () => {
-        document.title = title;
-      },
-      [title],
-    );
-  };
   
   const title = 'Netflix Roulette';
   useDocumentTitle(title);
@@ -34,7 +25,7 @@ const App = () => {
     <Content>
       { showMovieHeader
         ? (
-          <MovieDetailsHeader />
+          <MovieDetails />
         )
         : (
           <>
