@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import ContextMenu from '../ContextualMenu/contextMenu';
 import more from '../../img/more.svg';
-import movieimage from '../../img/img.png';
+import defaultmovieimage from '../../img/img_2.png';
 
 import './moviecard.css';
 import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
 
-const MovieCard = ({ title, description, year, onClick }) => {
+const MovieCard = ({ title, description, year, image, onClick }) => {
   const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
@@ -37,7 +37,8 @@ const MovieCard = ({ title, description, year, onClick }) => {
   return (
     <div className="movie-card">
       <div className="image-container">
-        <img onClick={onClick} className="movie-image" src={movieimage} alt={title} />
+        <img onClick={onClick} className="movie-image" src={image}
+             onError={(e)=>{e.target.onerror = null; e.target.src=defaultmovieimage}}/>
         <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
         { showMenu && (<ContextMenu className="context-menu" options={options} />) }
       </div>
