@@ -5,7 +5,6 @@ import { fetchMovies } from '../../reducers/movieSlice';
 
 const Menu = () => {
     const dispatch = useDispatch();
-    
     function fetchWithFilter(filterValue) {
       return () => dispatch(fetchMovies({
         params: {
@@ -13,24 +12,16 @@ const Menu = () => {
         },
       }));
     }
-    
+    const genres = ['All', 'Documentary', 'Comedy', 'Horror', 'Crime'];
     return (
       <ul className="menu">
-        <li>
-            <button onClick={() => dispatch(fetchMovies())}>All</button>
-        </li>
-        <li>
-            <button onClick={fetchWithFilter('Documentary')}>Documentary</button>
-        </li>
-        <li>
-            <button onClick={fetchWithFilter('Comedy')}>Comedy</button>
-        </li>
-        <li>
-            <button onClick={fetchWithFilter('Horror')}>Horror</button>
-        </li>
-        <li>
-            <button onClick={fetchWithFilter('Crime')}>Crime</button>
-        </li>
+        {
+          genres.map((genre) => (
+            <li>
+              <button type="button" onClick={fetchWithFilter(genre !== 'All' ? genre : undefined)}>{genre}</button>
+            </li>
+          ))
+        }
       </ul>
     );
 };

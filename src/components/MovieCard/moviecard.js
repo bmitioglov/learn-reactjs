@@ -37,8 +37,7 @@ const MovieCard = ({ title, description, year, image, onClick }) => {
   return (
     <div className="movie-card">
       <div className="image-container">
-        <img onClick={onClick} className="movie-image" src={image}
-             onError={(e)=>{e.target.onerror = null; e.target.src=defaultmovieimage}}/>
+        <img onClick={onClick} className="movie-image" src={image} alt={title} />
         <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
         { showMenu && (<ContextMenu className="context-menu" options={options} />) }
       </div>
