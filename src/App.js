@@ -1,6 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import { Provider } from 'react-redux';
+
 import Footer from './components/FooterLayout/footer';
 import Header from './components/Header/header';
 import MenuPanel from './components/MenuPanel/menupanel';
@@ -12,6 +14,8 @@ import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
 import MoviesLayout from './components/MoviesLayout/movieslayout';
 import MovieDetails from './components/MovieDetails/moviedetails';
 import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
+
+import store from './store/store';
 
 const App = () => {
   const [showMovieHeader, setShowMovieHeader] = useState(false);
@@ -52,4 +56,9 @@ const App = () => {
   );
 };
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('app'),
+);
