@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import { Provider } from 'react-redux';
+import { Provider, useSelector } from 'react-redux';
 
 import Footer from './components/FooterLayout/footer';
 import Header from './components/Header/header';
@@ -14,6 +14,7 @@ import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
 import MoviesLayout from './components/MoviesLayout/movieslayout';
 import MovieDetails from './components/MovieDetails/moviedetails';
 import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
+import { selectTotalFoundMovies } from './reducers/movieSlice';
 
 import store from './store/store';
 
@@ -21,6 +22,8 @@ const App = () => {
   const [showMovieHeader, setShowMovieHeader] = useState(false);
   
   const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
+  
+  const totalFoundMovies = useSelector(selectTotalFoundMovies);
   
   const title = 'Netflix Roulette';
   useDocumentTitle(title);
@@ -38,7 +41,7 @@ const App = () => {
           </>
         )}
       <MenuPanel />
-      <SearchResult searchResult={30} />
+      <SearchResult searchResult={totalFoundMovies} />
       <MoviesLayout>
         <ErrorBoundary>
           <MoviesList onMovieClick={toggleMovieHeader} />

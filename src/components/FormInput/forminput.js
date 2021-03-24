@@ -1,10 +1,10 @@
 import React from 'react';
 import './forminput.css';
 
-const FormInput = ({ title, type }) => (
+const FormInput = ({ title, type, onChange, value, id, name, onBlur }) => (
   <>
     <div className="form-field-header">{title}</div>
-    <input className="form-field-input" type={type} />
+    <input id={id} name={name} className="form-field-input" type={type} onChange={onChange} value={value} onBlur={onBlur} />
   </>
 );
 

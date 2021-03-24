@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './sortpanel.css';
-import { useDispatch } from 'react-redux';
-import { sortBy } from '../../reducers/movieSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { sortMoviesInCategory, selectCategory } from '../../reducers/movieSlice';
 
 const SortPanel = () => {
-  
   const dispatch = useDispatch();
+  const category = useSelector((state) => selectCategory(state));
+  
+  useEffect(() => {
+    const selector = document.getElementById('sortSelector');
+    selector.value = 'title';
+  }, [category]);
   
   return (
     <div className="sort-panel">
       <div>Sort By</div>
-      <select onChange={(e) => dispatch(sortBy(e.target.value))}>
+      <select id="sortSelector" onChange={(e) => dispatch(sortMoviesInCategory({
+            params: {
+              filter: category !== 'All' ? category : undefined,
+              sortBy: e.target.value,
+              sortOrder: 'asc',
+            },
+          }))}
+      >
         <option value="title">Title</option>
         <option value="vote_average">Rating</option>
         <option value="release_date">Release Date</option>

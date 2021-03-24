@@ -7,7 +7,7 @@ const ContextMenu = ({ options }) => {
       <ul className="menu-options">
         {
           options.map(({ title, callback }) => (
-            <li className="menu-option">
+            <li key={title} className="menu-option">
               <button className="context-button" type="button" onClick={callback}>{title}</button>
             </li>))
         }

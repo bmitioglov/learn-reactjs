@@ -1,9 +1,13 @@
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import client from '../api/jsonServer';
 import regeneratorRuntime from 'regenerator-runtime';
-import dynamicSort from '../utils/utils';
 
 export const fetchMovies = createAsyncThunk('movies/fetchMovies', async (params) => {
+  const response = await client.get('/movies', params);
+  return response.data;
+});
+
+export const sortMoviesInCategory = createAsyncThunk('movies/sortMoviesInCategory', async (params) => {
   const response = await client.get('/movies', params);
   return response.data;
 });
@@ -11,21 +15,25 @@ export const fetchMovies = createAsyncThunk('movies/fetchMovies', async (params)
 export const addNewMovie = createAsyncThunk(
   'movies/addNewMovie',
   async (newMovie) => {
-    return await client.post('/movies', { newMovie });
+    newMovie.genres = Array.isArray(newMovie.genres) ? newMovie.genres : [newMovie.genres];
+    const response = await client.post('/movies', newMovie);
+    return response.data;
   },
 );
 
 export const updateMovie = createAsyncThunk(
   'movies/updateMovie',
   async (updatedMovie) => {
-    return await client.put('/movies', { updatedMovie });
+    const response = await client.put('/movies', updatedMovie);
+    return response.data;
   },
 );
 
 export const deleteMovie = createAsyncThunk(
   'movies/deleteMovie',
-  async (deletedMovie) => {
-    return await client.delete(`/movies/${deletedMovie.id}`, { deletedMovie });
+  async (id) => {
+    const response = await client.delete(`/movies/${id}`);
+    return id;
   },
 );
 
@@ -38,10 +46,11 @@ export const moviesSlice = createSlice({
     limit: 0,
     status: 'idle',
     error: null,
+    category: 'All',
   },
   reducers: {
-    sortBy: (state, action) => {
-      state.moviesData.sort(dynamicSort(action.payload));
+    setCategory: (state, action) => {
+      state.category = action.payload;
     },
   },
   extraReducers: {
@@ -51,7 +60,7 @@ export const moviesSlice = createSlice({
     [fetchMovies.fulfilled]: (state, action) => {
       state.status = 'succeeded';
       state.moviesData = action.payload.data;
-      state.total = action.payload.total;
+      state.total = action.payload.totalAmount;
       state.offset = action.payload.offset;
       state.limit = action.payload.limit;
     },
@@ -60,14 +69,14 @@ export const moviesSlice = createSlice({
       state.error = action.error.message;
     },
     [addNewMovie.fulfilled]: (state, action) => {
-      state.moviesData.push(action.payload);
+      return { ...state, moviesData: [action.payload, ...state.moviesData] };
     },
     [addNewMovie.rejected]: (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
     },
     [updateMovie.fulfilled]: (state, action) => {
-      const objIndex = state.moviesData.findIndex((movie => movie.id === action.payload.id));
+      const objIndex = state.moviesData.findIndex(((movie) => movie.id === action.payload.id));
       state.moviesData[objIndex] = action.payload;
     },
     [updateMovie.rejected]: (state, action) => {
@@ -75,17 +84,31 @@ export const moviesSlice = createSlice({
       state.error = action.error.message;
     },
     [deleteMovie.fulfilled]: (state, action) => {
-      state.moviesData = state.moviesData.filter(({id}) => id !== action.payload.id);
+      return { ...state, moviesData: state.moviesData.filter(({ id }) => id !== action.payload) };
     },
     [deleteMovie.rejected]: (state, action) => {
       state.status = 'failed';
       state.error = action.error.message;
+      alert(action.error.message);
     },
-  }
+    [sortMoviesInCategory.fulfilled]: (state, action) => {
+      state.status = 'succeeded';
+      state.moviesData = action.payload.data;
+      state.total = action.payload.totalAmount;
+      state.offset = action.payload.offset;
+      state.limit = action.payload.limit;
+    },
+    [sortMoviesInCategory.rejected]: (state, action) => {
+      state.status = 'failed';
+      state.error = action.error.message;
+    },
+  },
 });
 
-export const { sortBy } = moviesSlice.actions;
+export const { sortBy, setCategory } = moviesSlice.actions;
 
 export const selectAllMovies = (state) => state.movies.moviesData;
+export const selectTotalFoundMovies = (state) => state.movies.total;
+export const selectCategory = (state) => state.movies.category;
 
 export default moviesSlice.reducer;

@@ -17,7 +17,6 @@ const MoviesList = ({ onMovieClick }) => {
     if (responseStatus === 'idle') {
       const params = {
         params: {
-          // filter: 'animation, comedy',
           sortBy: 'title',
           sortOrder: 'asc',
         },
@@ -34,10 +33,14 @@ const MoviesList = ({ onMovieClick }) => {
           <MovieCard
             className="movie-card"
             key={item.id}
+            id={item.id}
             title={item.title}
-            description={item.genres.join(', ')}
+            description={(item.genres !== undefined && item.genres.length !== 0) ? item.genres.join(', ') : ''}
             year={item.release_date.split('-')[0]}
             image={item.poster_path}
+            releaseDate={item.release_date}
+            runtime={item.runtime}
+            overview={item.overview}
             onClick={onMovieClick}
           />
       ))}
