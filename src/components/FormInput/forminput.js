@@ -1,14 +1,20 @@
 import React from 'react';
 import './forminput.css';
 
-const FormInput = ({ title, type, onChange, value, id, name, onBlur, isTouched, isError }) => (
-  <>
-    <div className="form-field-header">{title}</div>
-    <input id={id} name={name} className="form-field-input" type={type} onChange={onChange} value={value} onBlur={onBlur} />
-    {isTouched && isError ? (
-      <div>{isError}</div>
-    ) : null}
-  </>
-);
+import { useField } from 'formik';
+
+const FormInput = (props) => {
+  const { label, type } = props;
+  const [field, meta] = useField(props);
+  return (
+    <>
+      <div className="form-field-header">{label}</div>
+      <input {...field} {...props} className="form-field-input" type={type} />
+      {meta.touched && meta.error ? (
+        <div>{meta.error}</div>
+      ) : null}
+    </>
+  );
+};
 
 export default FormInput;

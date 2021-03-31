@@ -13,7 +13,7 @@
 .modal-content {
     display: flex;
     flex-direction: column;
-    margin: 10px 50px;
+    margin: 10px 30px;
 }
 
 .close {

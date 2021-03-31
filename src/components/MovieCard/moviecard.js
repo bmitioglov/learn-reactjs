@@ -47,7 +47,7 @@ const MovieCard = ({id, title, description, year, image, releaseDate, runtime, o
       </div>
       <div className="description">{description}</div>
       <DeleteMovieModal id={id} isShown={deleteShowModal} onClose={toggleDelete} />
-      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview} runtime={runtime} isShown={editShowModal} onClose={toggleEdit} />
+      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview} runtime={runtime} show={editShowModal} onClose={toggleEdit} />
     </div>
   );
 };
