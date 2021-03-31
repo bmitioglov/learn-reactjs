@@ -11,11 +11,11 @@ const AddMovieModal = ({ show, onClose }) => {
   
   const initialValues = {
     title: '',
-      release_date: '',
-      poster_path: '',
-      genres: 'Comedy',
-      overview: '',
-      runtime: 0,
+    release_date: '',
+    poster_path: '',
+    genres: 'Comedy',
+    overview: '',
+    runtime: 0,
   };
   
   return (

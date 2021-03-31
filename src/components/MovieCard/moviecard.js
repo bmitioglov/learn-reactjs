@@ -8,7 +8,7 @@ import './moviecard.css';
 import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
 
-const MovieCard = ({id, title, description, year, image, releaseDate, runtime, overview, onClick }) => {
+const MovieCard = ({id, title, description, year, image, releaseDate, runtime, genres, overview, onClick }) => {
   const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
@@ -47,7 +47,8 @@ const MovieCard = ({id, title, description, year, image, releaseDate, runtime, o
       </div>
       <div className="description">{description}</div>
       <DeleteMovieModal id={id} isShown={deleteShowModal} onClose={toggleDelete} />
-      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview} runtime={runtime} show={editShowModal} onClose={toggleEdit} />
+      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview}
+                      genres={genres} runtime={runtime} show={editShowModal} onClose={toggleEdit} />
     </div>
   );
 };

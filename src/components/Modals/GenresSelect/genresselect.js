@@ -1,12 +1,14 @@
 import React from 'react';
-import { Formik, Form, useField } from 'formik';
+import { useField } from 'formik';
+import '../../FormInput/forminput.css';
 
 export const GenresSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
+  console.log(field.value)
   return (
     <>
       <label className="form-field-header" htmlFor={props.id || props.name}>{label}</label>
-      <select className="form-field-input" {...field} {...props} />
+      <select multiple className="select-form-input" value={field.value} {...field} {...props} />
       {meta.touched && meta.error ? (
         <div className="error">{meta.error}</div>
       ) : null}

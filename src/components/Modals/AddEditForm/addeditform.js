@@ -18,10 +18,13 @@ const AddEditForm = ({ initialValues, validationSchema, onSubmit }) => {
           <FormInput label="MOVIE URL" id="poster_path" name="poster_path" type="text" />
           
           <GenresSelect label="Genres" name="genres">
-            <option value="">Select a genre</option>
-            <option value="comedy">Comedy</option>
-            <option value="drama">Drama</option>
-            <option value="horror">Horror</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Thriller">Thriller</option>
+            <option value="Romance">Romance</option>
+            <option value="Science Fiction">Science Fiction</option>
+            <option value="Documentary">Documentary</option>
           </GenresSelect>
           
           <FormInput label="OVERVIEW" name="overview" type="text" />

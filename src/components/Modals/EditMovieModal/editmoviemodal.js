@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { validationSchema } from '../../../utils/utils';
 import AddEditForm from '../AddEditForm/addeditform';
 
-const EditMovieModal = ({ id, title, releaseDate, posterPath, overview, runtime, show, onClose }) => {
+const EditMovieModal = ({ id, title, releaseDate, posterPath, overview, runtime, genres, show, onClose }) => {
   
   const dispatch = useDispatch();
   
@@ -17,6 +17,7 @@ const EditMovieModal = ({ id, title, releaseDate, posterPath, overview, runtime,
     poster_path: posterPath,
     overview: overview,
     runtime: runtime,
+    genres: genres,
   };
   
   return (

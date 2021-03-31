@@ -40,6 +40,7 @@ const MoviesList = ({ onMovieClick }) => {
             image={item.poster_path}
             releaseDate={item.release_date}
             runtime={item.runtime}
+            genres={item.genres}
             overview={item.overview}
             onClick={onMovieClick}
           />
