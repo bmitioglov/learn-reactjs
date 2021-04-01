@@ -4,7 +4,6 @@
     left: 45%;
     right: auto;
     bottom: auto;
-    /*margin-right: -50%;*/
     width: 30%;
     transform: translate(-40%, -10%);
     background-color: #424242;
@@ -13,7 +12,7 @@
 .modal-content {
     display: flex;
     flex-direction: column;
-    margin: 10px 50px;
+    margin: 10px 30px;
 }
 
 .close {

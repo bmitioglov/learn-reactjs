@@ -19,5 +19,6 @@ rules: {
   "@typescript-eslint/no-use-before-define": [ "error" ],
   "no-trailing-spaces": "off",
   "max-len": "off",
-  "indent": "off"
+  "indent": "off",
+  "react/prop-types": "off"
 }

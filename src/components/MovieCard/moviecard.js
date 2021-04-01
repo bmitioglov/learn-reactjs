@@ -8,7 +8,7 @@ import './moviecard.css';
 import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
 
-const MovieCard = ({ title, description, year, image, onClick }) => {
+const MovieCard = ({id, title, description, year, image, releaseDate, runtime, genres, overview, onClick }) => {
   const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
@@ -46,8 +46,9 @@ const MovieCard = ({ title, description, year, image, onClick }) => {
         <div>{year}</div>
       </div>
       <div className="description">{description}</div>
-      <DeleteMovieModal isShown={deleteShowModal} onClose={toggleDelete} />
-      <EditMovieModal isShown={editShowModal} onClose={toggleEdit} />
+      <DeleteMovieModal id={id} isShown={deleteShowModal} onClose={toggleDelete} />
+      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview}
+                      genres={genres} runtime={runtime} show={editShowModal} onClose={toggleEdit} />
     </div>
   );
 };
@@ -55,7 +56,7 @@ const MovieCard = ({ title, description, year, image, onClick }) => {
 MovieCard.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired,
+  year: PropTypes.string.isRequired,
 };
 
 export default MovieCard;

@@ -16,7 +16,6 @@ const Header = () => {
         </p>
         <button className="add-movie-button" type="button" onClick={toggleAddModal}>+ Add Movie</button>
       </div>
-      {/* TODO: is it ok to add it here? */}
       <AddMovieModal show={show} onClose={toggleAddModal} />
     </>
   );
