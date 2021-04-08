@@ -44,7 +44,7 @@ const App = () => {
               <Search />
             </>
           )}
-        <MenuPanel />
+        <MenuPanel menuClick={() => setShowMovieHeader(false)} />
         <SearchResult searchResult={totalFoundMovies} />
         <MoviesLayout>
           <ErrorBoundary>
@@ -70,6 +70,7 @@ const App = () => {
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/movie/:id" component={Home} />
         <Route component={NotFoundPage} />
       </Switch>
     </Router>

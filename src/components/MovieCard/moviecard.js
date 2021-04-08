@@ -7,11 +7,13 @@ import defaultmovieimage from '../../img/img_2.png';
 import './moviecard.css';
 import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
+import { useHistory } from 'react-router-dom';
 
 const MovieCard = ({id, title, description, year, image, releaseDate, runtime, genres, overview, onClick }) => {
   const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
+  const history = useHistory();
   
   const handleOffMenuClick = () => {
     if (showMenu) setShowMenuState(false);
@@ -34,10 +36,12 @@ const MovieCard = ({id, title, description, year, image, releaseDate, runtime, g
     { title: 'Delete', callback: toggleDelete },
   ];
   
+  
   return (
     <div className="movie-card">
       <div className="image-container">
-        <img onClick={onClick} className="movie-image" src={image} alt={title} />
+        <img onClick={function(event){ onClick(); history.push(`/movie/${id}`); }}
+               className="movie-image" src={image} alt={title} />
         <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
         { showMenu && (<ContextMenu className="context-menu" options={options} />) }
       </div>

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../../components/MovieCard/moviecard';
 import './movieslist.css';
-import { selectAllMovies, fetchMovies } from '../../reducers/movieSlice';
+import {selectAllMovies, fetchMovies, selectCategory} from '../../reducers/movieSlice';
 import { useLocation } from 'react-router';
 
 const MoviesList = ({ onMovieClick }) => {
@@ -19,15 +19,19 @@ const MoviesList = ({ onMovieClick }) => {
   const urlValue = location.search;
   const searchValue = new URLSearchParams(urlValue).get('search');
   
+  const category = useSelector((state) => selectCategory(state));
+  
+  //TODO: fix
   useEffect(() => {
     console.log(urlValue);
-
+    console.log('useEffect!');
     const params = {
         params: {
           sortBy: 'title',
           sortOrder: 'asc',
           search: searchValue,
           searchBy: 'title',
+          filter: category !== 'All' ? category : undefined,
         },
       };
       dispatch(fetchMovies(params));
