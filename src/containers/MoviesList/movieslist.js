@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../../components/MovieCard/moviecard';
 import './movieslist.css';
 import { selectAllMovies, fetchMovies } from '../../reducers/movieSlice';
+import { useLocation } from 'react-router';
 
 const MoviesList = ({ onMovieClick }) => {
   
@@ -13,17 +14,24 @@ const MoviesList = ({ onMovieClick }) => {
     return state.movies.status;
   });
   
+  const location = useLocation();
+  
+  const urlValue = location.search;
+  const searchValue = new URLSearchParams(urlValue).get('search');
+  
   useEffect(() => {
-    if (responseStatus === 'idle') {
-      const params = {
+    console.log(urlValue);
+
+    const params = {
         params: {
           sortBy: 'title',
           sortOrder: 'asc',
+          search: searchValue,
+          searchBy: 'title',
         },
       };
       dispatch(fetchMovies(params));
-    }
-  }, [responseStatus, dispatch]);
+  }, [urlValue]);
   
   if (responseStatus === 'loading') return <div className="loader">Loading...</div>;
   return (

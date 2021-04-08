@@ -2,6 +2,11 @@ import React, { useState, useCallback } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider, useSelector } from 'react-redux';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 import Footer from './components/FooterLayout/footer';
 import Header from './components/Header/header';
@@ -17,6 +22,7 @@ import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
 import { selectTotalFoundMovies } from './reducers/movieSlice';
 
 import store from './store/store';
+import NotFoundPage from './components/notfoundpage/notfoundpage';
 
 const App = () => {
   const [showMovieHeader, setShowMovieHeader] = useState(false);
@@ -25,37 +31,48 @@ const App = () => {
   
   const totalFoundMovies = useSelector(selectTotalFoundMovies);
   
+  const Home = () => {
+    return (
+      <Content>
+        { showMovieHeader
+          ? (
+            <MovieDetails />
+          )
+          : (
+            <>
+              <Header />
+              <Search />
+            </>
+          )}
+        <MenuPanel />
+        <SearchResult searchResult={totalFoundMovies} />
+        <MoviesLayout>
+          <ErrorBoundary>
+            <MoviesList onMovieClick={toggleMovieHeader} />
+          </ErrorBoundary>
+        </MoviesLayout>
+        <Footer>
+          <p>
+            <b>
+              netflix
+            </b>
+            roulette
+          </p>
+        </Footer>
+      </Content>
+    );
+  };
+  
   const title = 'Netflix Roulette';
   useDocumentTitle(title);
   
   return (
-    <Content>
-      { showMovieHeader
-        ? (
-          <MovieDetails />
-        )
-        : (
-          <>
-            <Header />
-            <Search />
-          </>
-        )}
-      <MenuPanel />
-      <SearchResult searchResult={totalFoundMovies} />
-      <MoviesLayout>
-        <ErrorBoundary>
-          <MoviesList onMovieClick={toggleMovieHeader} />
-        </ErrorBoundary>
-      </MoviesLayout>
-      <Footer>
-        <p>
-          <b>
-            netflix
-          </b>
-          roulette
-        </p>
-      </Footer>
-    </Content>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route component={NotFoundPage} />
+      </Switch>
+    </Router>
   );
 };
 

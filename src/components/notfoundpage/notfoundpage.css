@@ -1,0 +1,28 @@
+.error-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex-direction: column;
+}
+
+.error-label {
+    font-size: 50px;
+    color: white;
+}
+
+html, body, #app {
+    height: 100%;
+}
+
+.go-back-button {
+    margin-left: 20px;
+    color: white;
+    background-color: #f65261;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 0 solid;
+    width: 170px;
+    height: 60px;
+    text-transform: uppercase;
+}
