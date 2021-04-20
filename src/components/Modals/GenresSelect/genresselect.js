@@ -4,7 +4,6 @@ import '../../FormInput/forminput.css';
 
 export const GenresSelect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
-  console.log(field.value)
   return (
     <>
       <label className="form-field-header" htmlFor={props.id || props.name}>{label}</label>

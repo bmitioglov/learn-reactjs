@@ -22,6 +22,9 @@ module.exports = {
   ],
   optimization: {
     minimize: true
-  }
+  },
+  devServer: {
+    historyApiFallback: true,
+  },
   
 }

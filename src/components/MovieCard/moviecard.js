@@ -3,15 +3,20 @@ import PropTypes from 'prop-types';
 import ContextMenu from '../ContextualMenu/contextMenu';
 import more from '../../img/more.svg';
 import defaultmovieimage from '../../img/img_2.png';
+import { toggleShowMovieHeader } from '../../reducers/movieSlice';
 
 import './moviecard.css';
 import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
 import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
+import { useHistory } from 'react-router-dom';
+import {useDispatch} from 'react-redux';
 
-const MovieCard = ({id, title, description, year, image, releaseDate, runtime, genres, overview, onClick }) => {
+const MovieCard = ({ id, title, description, year, image, releaseDate, runtime, genres, overview }) => {
   const [showMenu, setShowMenuState] = useState(false);
   const [editShowModal, setEditShowModal] = useState(false);
   const [deleteShowModal, setDeleteShowModal] = useState(false);
+  const history = useHistory();
+  const dispatch = useDispatch();
   
   const handleOffMenuClick = () => {
     if (showMenu) setShowMenuState(false);
@@ -37,7 +42,9 @@ const MovieCard = ({id, title, description, year, image, releaseDate, runtime, g
   return (
     <div className="movie-card">
       <div className="image-container">
-        <img onClick={onClick} className="movie-image" src={image} alt={title} />
+        <img onClick={function(event)
+                          { dispatch(toggleShowMovieHeader()); history.push(`/movie/${id}`); }}
+             className="movie-image" src={image} alt={title} />
         <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
         { showMenu && (<ContextMenu className="context-menu" options={options} />) }
       </div>

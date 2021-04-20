@@ -23,6 +23,9 @@ module.exports = {
   optimization: {
     minimize: false
   },
-  devtool: 'source-map'
+  devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true,
+  },
   
 }

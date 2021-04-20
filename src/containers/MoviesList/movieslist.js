@@ -2,9 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../../components/MovieCard/moviecard';
 import './movieslist.css';
-import { selectAllMovies, fetchMovies } from '../../reducers/movieSlice';
+import { selectAllMovies, fetchMovies, selectCategory } from '../../reducers/movieSlice';
+import { useLocation } from 'react-router';
 
-const MoviesList = ({ onMovieClick }) => {
+const MoviesList = () => {
   
   const dispatch = useDispatch();
   const movies = useSelector(selectAllMovies);
@@ -13,17 +14,25 @@ const MoviesList = ({ onMovieClick }) => {
     return state.movies.status;
   });
   
+  const location = useLocation();
+  
+  const urlValue = location.search;
+  const searchValue = new URLSearchParams(urlValue).get('search');
+  
+  const category = useSelector(selectCategory);
+  
   useEffect(() => {
-    if (responseStatus === 'idle') {
-      const params = {
+    const params = {
         params: {
           sortBy: 'title',
           sortOrder: 'asc',
+          search: searchValue,
+          searchBy: 'title',
+          filter: category !== 'All' ? category : undefined,
         },
       };
       dispatch(fetchMovies(params));
-    }
-  }, [responseStatus, dispatch]);
+  }, [urlValue]);
   
   if (responseStatus === 'loading') return <div className="loader">Loading...</div>;
   return (
@@ -42,7 +51,6 @@ const MoviesList = ({ onMovieClick }) => {
             runtime={item.runtime}
             genres={item.genres}
             overview={item.overview}
-            onClick={onMovieClick}
           />
       ))}
     </div>
