@@ -22,8 +22,6 @@ const MoviesList = () => {
   const category = useSelector(selectCategory);
   
   useEffect(() => {
-    console.log(urlValue);
-    console.log('useEffect!');
     const params = {
         params: {
           sortBy: 'title',

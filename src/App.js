@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider, useSelector } from 'react-redux';
@@ -25,9 +25,6 @@ import store from './store/store';
 import NotFoundPage from './components/notfoundpage/notfoundpage';
 
 const App = () => {
-  // const [showMovieHeader, setShowMovieHeader] = useState(false);
-  
-  // const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
   
   const totalFoundMovies = useSelector(selectTotalFoundMovies);
   const showMovieHeader = useSelector(selectShowMovieHeader);

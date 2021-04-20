@@ -43,7 +43,7 @@ const MovieCard = ({ id, title, description, year, image, releaseDate, runtime, 
     <div className="movie-card">
       <div className="image-container">
         <img onClick={function(event)
-                          { dispatch(toggleShowMovieHeader()); console.log('wtf!'); history.push(`/movie/${id}`); }}
+                          { dispatch(toggleShowMovieHeader()); history.push(`/movie/${id}`); }}
              className="movie-image" src={image} alt={title} />
         <img onClick={toggleMenu} className="more-icon" src={more} alt="more" />
         { showMenu && (<ContextMenu className="context-menu" options={options} />) }

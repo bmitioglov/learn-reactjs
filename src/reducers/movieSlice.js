@@ -54,8 +54,6 @@ export const moviesSlice = createSlice({
       state.category = action.payload;
     },
     setShowMovieHeader: (state, action) => {
-      console.log('test')
-      console.log(action.payload);
       state.showMovieHeader = action.payload;
     },
     toggleShowMovieHeader: (state, action) => {
