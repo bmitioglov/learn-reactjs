@@ -19,17 +19,18 @@ import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
 import MoviesLayout from './components/MoviesLayout/movieslayout';
 import MovieDetails from './components/MovieDetails/moviedetails';
 import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
-import { selectTotalFoundMovies } from './reducers/movieSlice';
+import { selectTotalFoundMovies, selectShowMovieHeader } from './reducers/movieSlice';
 
 import store from './store/store';
 import NotFoundPage from './components/notfoundpage/notfoundpage';
 
 const App = () => {
-  const [showMovieHeader, setShowMovieHeader] = useState(false);
+  // const [showMovieHeader, setShowMovieHeader] = useState(false);
   
-  const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
+  // const toggleMovieHeader = useCallback(() => setShowMovieHeader((prevValue) => !prevValue), []);
   
   const totalFoundMovies = useSelector(selectTotalFoundMovies);
+  const showMovieHeader = useSelector(selectShowMovieHeader);
   
   const Home = () => {
     return (
@@ -44,11 +45,11 @@ const App = () => {
               <Search />
             </>
           )}
-        <MenuPanel menuClick={() => setShowMovieHeader(false)} />
+        <MenuPanel />
         <SearchResult searchResult={totalFoundMovies} />
         <MoviesLayout>
           <ErrorBoundary>
-            <MoviesList onMovieClick={toggleMovieHeader} />
+            <MoviesList/>
           </ErrorBoundary>
         </MoviesLayout>
         <Footer>

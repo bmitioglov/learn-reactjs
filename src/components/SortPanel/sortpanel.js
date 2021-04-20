@@ -5,7 +5,7 @@ import { sortMoviesInCategory, selectCategory } from '../../reducers/movieSlice'
 
 const SortPanel = () => {
   const dispatch = useDispatch();
-  const category = useSelector((state) => selectCategory(state));
+  const category = useSelector(selectCategory);
   
   useEffect(() => {
     const selector = document.getElementById('sortSelector');

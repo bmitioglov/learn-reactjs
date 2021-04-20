@@ -25,7 +25,7 @@ const Search = () => {
       <h3 className="SearchHeader">Find your movie</h3>
       <div className="search-bar">
         <input className="search-input" type="text"
-               onKeyPress={enterPressed.bind(this)}
+               onKeyPress={enterPressed}
                onChange={(event) => setSearchInput(event.target.value)} />
         <button className="search-button" type="button" onClick={handleClick}>Search</button>
       </div>

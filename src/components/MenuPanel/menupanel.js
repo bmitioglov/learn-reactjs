@@ -3,9 +3,9 @@ import Menu from '../Menu/menu';
 import SortPanel from '../SortPanel/sortpanel';
 import './menupanel.css';
 
-const MenuPanel = ({ menuClick }) => (
+const MenuPanel = () => (
   <div className="menu-panel">
-    <Menu menuClick={menuClick} />
+    <Menu />
     <SortPanel />
   </div>
 );

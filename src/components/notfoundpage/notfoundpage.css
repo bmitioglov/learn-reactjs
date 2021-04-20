@@ -16,6 +16,9 @@ html, body, #app {
 }
 
 .go-back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-left: 20px;
     color: white;
     background-color: #f65261;

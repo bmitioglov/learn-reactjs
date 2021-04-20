@@ -1,16 +1,16 @@
 import React from 'react';
 import './menu.css';
 import { useDispatch } from 'react-redux';
-import { fetchMovies, setCategory } from '../../reducers/movieSlice';
 import { useHistory } from 'react-router-dom';
+import { fetchMovies, setCategory, setShowMovieHeader } from '../../reducers/movieSlice';
 
-const Menu = ({ menuClick }) => {
+const Menu = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   
   function fetchWithFilter(filterValue) {
       return () => {
-        menuClick();
+        dispatch(setShowMovieHeader(false));
         dispatch(fetchMovies({
             params: {
               filter: filterValue,

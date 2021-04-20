@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../../components/MovieCard/moviecard';
 import './movieslist.css';
-import {selectAllMovies, fetchMovies, selectCategory} from '../../reducers/movieSlice';
+import { selectAllMovies, fetchMovies, selectCategory } from '../../reducers/movieSlice';
 import { useLocation } from 'react-router';
 
-const MoviesList = ({ onMovieClick }) => {
+const MoviesList = () => {
   
   const dispatch = useDispatch();
   const movies = useSelector(selectAllMovies);
@@ -19,9 +19,8 @@ const MoviesList = ({ onMovieClick }) => {
   const urlValue = location.search;
   const searchValue = new URLSearchParams(urlValue).get('search');
   
-  const category = useSelector((state) => selectCategory(state));
+  const category = useSelector(selectCategory);
   
-  //TODO: fix
   useEffect(() => {
     console.log(urlValue);
     console.log('useEffect!');
@@ -54,7 +53,6 @@ const MoviesList = ({ onMovieClick }) => {
             runtime={item.runtime}
             genres={item.genres}
             overview={item.overview}
-            onClick={onMovieClick}
           />
       ))}
     </div>

@@ -47,10 +47,19 @@ export const moviesSlice = createSlice({
     status: 'idle',
     error: null,
     category: 'All',
+    showMovieHeader: false,
   },
   reducers: {
     setCategory: (state, action) => {
       state.category = action.payload;
+    },
+    setShowMovieHeader: (state, action) => {
+      console.log('test')
+      console.log(action.payload);
+      state.showMovieHeader = action.payload;
+    },
+    toggleShowMovieHeader: (state, action) => {
+      state.showMovieHeader = !state.showMovieHeader;
     },
   },
   extraReducers: {
@@ -105,10 +114,11 @@ export const moviesSlice = createSlice({
   },
 });
 
-export const { sortBy, setCategory } = moviesSlice.actions;
+export const { sortBy, setCategory, setShowMovieHeader, toggleShowMovieHeader } = moviesSlice.actions;
 
 export const selectAllMovies = (state) => state.movies.moviesData;
 export const selectTotalFoundMovies = (state) => state.movies.total;
 export const selectCategory = (state) => state.movies.category;
+export const selectShowMovieHeader = (state) => state.movies.showMovieHeader;
 
 export default moviesSlice.reducer;
