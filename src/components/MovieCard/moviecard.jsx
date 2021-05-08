@@ -6,8 +6,8 @@ import defaultmovieimage from '../../img/img_2.png';
 import { toggleShowMovieHeader } from '../../reducers/movieSlice';
 
 import './moviecard.css';
-import DeleteMovieModal from '../Modals/DeleteMovieModal/deletemoviemodal';
-import EditMovieModal from '../Modals/EditMovieModal/editmoviemodal';
+import Deletemoviemodal from '../Modals/DeleteMovieModal/deletemoviemodal';
+import Editmoviemodal from '../Modals/EditMovieModal/editmoviemodal';
 import { useHistory } from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 
@@ -53,8 +53,8 @@ const MovieCard = ({ id, title, description, year, image, releaseDate, runtime, 
         <div>{year}</div>
       </div>
       <div className="description">{description}</div>
-      <DeleteMovieModal id={id} isShown={deleteShowModal} onClose={toggleDelete} />
-      <EditMovieModal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview}
+      <Deletemoviemodal id={id} isShown={deleteShowModal} onClose={toggleDelete} />
+      <Editmoviemodal id={id} title={title} releaseDate={releaseDate} posterPath={image} overview={overview}
                       genres={genres} runtime={runtime} show={editShowModal} onClose={toggleEdit} />
     </div>
   );

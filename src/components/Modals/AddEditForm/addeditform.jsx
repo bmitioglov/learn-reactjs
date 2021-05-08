@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form } from 'formik';
 import FormInput from '../../FormInput/forminput';
-import { GenresSelect } from '../GenresSelect/genresselect';
+import { Genresselect } from '../GenresSelect/genresselect';
 import './addeditform.css';
 
 const AddEditForm = ({ initialValues, validationSchema, onSubmit }) => {
@@ -17,7 +17,7 @@ const AddEditForm = ({ initialValues, validationSchema, onSubmit }) => {
           <FormInput label="RELEASE DATE" name="release_date" type="date" />
           <FormInput label="MOVIE URL" id="poster_path" name="poster_path" type="text" />
           
-          <GenresSelect label="Genres" name="genres">
+          <Genresselect label="Genres" name="genres">
             <option value="Comedy">Comedy</option>
             <option value="Drama">Drama</option>
             <option value="Horror">Horror</option>
@@ -25,7 +25,7 @@ const AddEditForm = ({ initialValues, validationSchema, onSubmit }) => {
             <option value="Romance">Romance</option>
             <option value="Science Fiction">Science Fiction</option>
             <option value="Documentary">Documentary</option>
-          </GenresSelect>
+          </Genresselect>
           
           <FormInput label="OVERVIEW" name="overview" type="text" />
           <FormInput label="RUNTIME" name="runtime" type="number" />

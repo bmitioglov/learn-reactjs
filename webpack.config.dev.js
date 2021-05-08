@@ -12,6 +12,7 @@ module.exports = {
       {test: /\.(js)$/, use: 'babel-loader'},
       {test: /\.css$/, use: ['style-loader', 'css-loader']},
       {test: /\.(gif|svg|jpg|png)$/, use: 'file-loader'},
+      {test: /\.jsx?$/, resolve: { extensions: ['.js', '.jsx'] }, use: 'babel-loader'},
     ],
   },
   mode: 'development',

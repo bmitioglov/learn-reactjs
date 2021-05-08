@@ -2,7 +2,7 @@ import React from 'react';
 import { useField } from 'formik';
 import '../../FormInput/forminput.css';
 
-export const GenresSelect = ({ label, ...props }) => {
+export const Genresselect = ({ label, ...props }) => {
   const [field, meta] = useField(props);
   return (
     <>

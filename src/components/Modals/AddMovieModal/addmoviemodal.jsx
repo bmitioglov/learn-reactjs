@@ -1,42 +1,40 @@
 import React from 'react';
 import Modal from 'react-modal';
-import './editmoviemodal.css';
-import {updateMovie} from '../../../reducers/movieSlice';
+import './addmoviemodal.css';
 import { useDispatch } from 'react-redux';
+import { addNewMovie } from '../../../reducers/movieSlice';
 import { validationSchema } from '../../../utils/utils';
 import AddEditForm from '../AddEditForm/addeditform';
 
-const EditMovieModal = ({ id, title, releaseDate, posterPath, overview, runtime, genres, show, onClose }) => {
-  
+const Addmoviemodal = ({ show, onClose }) => {
   const dispatch = useDispatch();
   
   const initialValues = {
-    id: id,
-    title: title,
-    release_date: releaseDate,
-    poster_path: posterPath,
-    overview: overview,
-    runtime: runtime,
-    genres: genres,
+    title: '',
+    release_date: '',
+    poster_path: '',
+    genres: 'Comedy',
+    overview: '',
+    runtime: 0,
   };
   
   return (
     <Modal
       isOpen={show}
       onRequestClose={onClose}
-      contentLabel="Edit Modal"
+      contentLabel="Add Modal"
       appElement={document.getElementById('app')}
-      className="edit-movie-modal"
+      className="add-movie-modal"
     >
       <div className="close" onClick={onClose}>
         &times;
       </div>
       <div className="modal-content">
-        <h2 className="edit-movie-header">Edit movie</h2>
+        <h2 className="add-movie-header">Add movie</h2>
         <AddEditForm
           initialValues={initialValues}
           onSubmit={(values) => {
-           dispatch(updateMovie(values));
+           dispatch(addNewMovie(values));
            onClose();
           }}
           validationSchema={validationSchema}
@@ -46,4 +44,4 @@ const EditMovieModal = ({ id, title, releaseDate, posterPath, overview, runtime,
   );
 };
 
-export default EditMovieModal;
+export default Addmoviemodal;

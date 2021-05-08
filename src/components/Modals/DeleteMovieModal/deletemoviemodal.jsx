@@ -5,7 +5,7 @@ import {useDispatch} from 'react-redux';
 import { deleteMovie } from '../../../reducers/movieSlice';
 
 
-const DeleteMovieModal = ({ id, isShown, onClose }) => {
+const Deletemoviemodal = ({ id, isShown, onClose }) => {
   
   const dispatch = useDispatch();
   
@@ -31,4 +31,4 @@ const DeleteMovieModal = ({ id, isShown, onClose }) => {
   );
 };
 
-export default DeleteMovieModal;
+export default Deletemoviemodal;
