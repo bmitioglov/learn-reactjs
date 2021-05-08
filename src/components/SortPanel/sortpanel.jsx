@@ -3,7 +3,7 @@ import './sortpanel.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { sortMoviesInCategory, selectCategory } from '../../reducers/movieSlice';
 
-const SortPanel = () => {
+const Sortpanel = () => {
   const dispatch = useDispatch();
   const category = useSelector(selectCategory);
   
@@ -31,4 +31,4 @@ const SortPanel = () => {
   );
 };
 
-export default SortPanel;
+export default Sortpanel;

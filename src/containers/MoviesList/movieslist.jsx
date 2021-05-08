@@ -5,7 +5,7 @@ import './movieslist.css';
 import { selectAllMovies, fetchMovies, selectCategory } from '../../reducers/movieSlice';
 import { useLocation } from 'react-router';
 
-const MoviesList = () => {
+const Movieslist = () => {
   
   const dispatch = useDispatch();
   const movies = useSelector(selectAllMovies);
@@ -57,4 +57,4 @@ const MoviesList = () => {
   );
 };
 
-export default React.memo(MoviesList);
+export default React.memo(Movieslist);
