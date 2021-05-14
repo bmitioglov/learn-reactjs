@@ -1,6 +1,7 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const common = require('./webpack.config.common');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = merge.merge(common, {
   mode: 'development',
@@ -12,6 +13,7 @@ module.exports = merge.merge(common, {
     filename: 'js/serverRenderer.js',
     libraryTarget: 'commonjs2',
   },
+  plugins: [new MiniCssExtractPlugin()],
   module: {
     rules: [
       // {
@@ -27,8 +29,12 @@ module.exports = merge.merge(common, {
       //     },
       //   ],
       // },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
       {test: /\.(js)$/, use: 'babel-loader'},
-      {test: /\.css$/, use: ['style-loader', 'css-loader']},
+      // {test: /\.css$/, use: ['style-loader', 'css-loader']},
       {test: /\.(gif|svg|jpg|png)$/, use: 'file-loader'},
       {test: /\.jsx?$/, resolve: { extensions: ['.js', '.jsx'] }, use: 'babel-loader'},
     ],
