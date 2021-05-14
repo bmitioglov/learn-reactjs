@@ -2,7 +2,7 @@ import React from 'react';
 import './notfoundpage.css';
 import {Link, useHistory} from 'react-router-dom';
 
-const NotFoundPage = () => {
+const Notfoundpage = () => {
   const history = useHistory();
   
   function handleClick() {
@@ -19,4 +19,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default Notfoundpage;

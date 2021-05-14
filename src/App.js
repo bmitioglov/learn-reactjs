@@ -16,13 +16,13 @@ import Search from './components/Search/search';
 import Content from './components/ContentLayout/contentlayout';
 import SearchResult from './components/SearchResultCounter/searchresultcounter';
 import ErrorBoundary from './containers/ErrorBoundary/errorboundary';
-import MoviesLayout from './components/MoviesLayout/movieslayout';
+import Movieslayout from './components/MoviesLayout/movieslayout';
 import MovieDetails from './components/MovieDetails/moviedetails';
 import useDocumentTitle from './components/useDocumentTitle/usedocumenttitle';
 import { selectTotalFoundMovies, selectShowMovieHeader } from './reducers/movieSlice';
 
 import store from './store/store';
-import NotFoundPage from './components/notfoundpage/notfoundpage';
+import Notfoundpage from './components/notfoundpage/notfoundpage';
 
 const App = () => {
   
@@ -44,11 +44,11 @@ const App = () => {
           )}
         <MenuPanel />
         <SearchResult searchResult={totalFoundMovies} />
-        <MoviesLayout>
+        <Movieslayout>
           <ErrorBoundary>
             <MoviesList/>
           </ErrorBoundary>
-        </MoviesLayout>
+        </Movieslayout>
         <Footer>
           <p>
             <b>
@@ -69,7 +69,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/movie/:id" component={Home} />
-        <Route component={NotFoundPage} />
+        <Route component={Notfoundpage} />
       </Switch>
     </Router>
   );
