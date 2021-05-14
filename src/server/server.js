@@ -41,6 +41,7 @@ function renderFullPage(html, preloadedState) {
     <html>
       <head>
         <title>Redux Universal Example</title>
+        <link href="/css/main.css" rel="stylesheet" type="text/css">
       </head>
       <body>
         <div id="app">${html}</div>
@@ -52,7 +53,8 @@ function renderFullPage(html, preloadedState) {
     '\\u003c'
   )}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="/js/main.js"></script>
+        <link rel="stylesheet" href="main.css">
       </body>
     </html>
     `
