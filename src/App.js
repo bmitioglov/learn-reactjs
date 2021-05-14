@@ -75,6 +75,8 @@ const App = () => {
   );
 };
 
+export default App;
+
 ReactDOM.render(
   <Provider store={store}>
     <App />
