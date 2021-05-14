@@ -10,6 +10,7 @@
     ]
   },
   "scripts": {
+    "server-build": "webpack --config webpack/webpack.config.server.js",
     "test": "jest",
     "webpack": "webpack",
     "start:dev": "webpack serve --open",
@@ -36,11 +37,14 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "formik": "^2.2.6",
+    "hashedmoduleidsplugin": "^1.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.6.3",
+    "mini-css-extract-plugin": "^1.6.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-loadable-ts-transformer": "^0.0.5",
     "react-modal": "^3.12.1",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
@@ -48,6 +52,7 @@
     "react-test-renderer": "^17.0.2",
     "redux": "^4.0.5",
     "regenerator-runtime": "^0.13.7",
+    "webpack-node-externals": "^3.0.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {
