@@ -13,25 +13,19 @@ module.exports = merge.merge(common, {
   
   entry: [
     isDevMod && 'webpack-hot-middleware/client',
-    './src/client.tsx',
+    './src/client/client.js',
   ].filter(Boolean),
   
   module: {
     rules: [
       {
-        test: /\.css$/,
-        include: /src/,
-        use: [
-          isDevMod ? 'style-loader' : MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              localIdentName: '[name]-[hash:5]',
-            },
-          },
-        ],
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
+      {test: /\.(js)$/, use: 'babel-loader'},
+      // {test: /\.css$/, use: ['style-loader', 'css-loader']},
+      {test: /\.(gif|svg|jpg|png)$/, use: 'file-loader'},
+      {test: /\.jsx?$/, resolve: { extensions: ['.js', '.jsx'] }, use: 'babel-loader'},
     ],
   },
   
