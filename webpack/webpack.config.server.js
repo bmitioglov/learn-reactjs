@@ -7,7 +7,7 @@ module.exports = merge.merge(common, {
   mode: 'development',
   name: 'server',
   target: 'node',
-  entry: './src/server/server.js',
+  entry: './src/server/server.jsx',
   externals: [nodeExternals()],
   output: {
     filename: 'js/serverRenderer.js',
