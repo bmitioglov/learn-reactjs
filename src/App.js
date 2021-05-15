@@ -77,9 +77,11 @@ const App = () => {
 
 export default App;
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  // document.getElementById('app'),
-);
+if (typeof window !== 'undefined') {
+  ReactDOM.hydrate(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('app'),
+  );
+}

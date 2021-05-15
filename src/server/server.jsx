@@ -5,8 +5,8 @@ import { StaticRouter } from 'react-router-dom';
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 
 import thunk from 'redux-thunk';
-import { movieReducer } from '../../src/reducers/movieSlice';
-import { App } from '../App';
+import movieReducer from '../../src/reducers/movieSlice';
+import App from '../App';
 
 const rootReducer = combineReducers({
   movie: movieReducer,
