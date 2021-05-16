@@ -23,7 +23,7 @@ const Addmoviemodal = ({ show, onClose }) => {
       isOpen={show}
       onRequestClose={onClose}
       contentLabel="Add Modal"
-      appElement={document.getElementById('app')}
+      // appElement={document.getElementById('app')}
       className="add-movie-modal"
     >
       <div className="close" onClick={onClose}>

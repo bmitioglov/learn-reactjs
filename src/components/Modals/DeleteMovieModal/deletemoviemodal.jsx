@@ -14,7 +14,7 @@ const Deletemoviemodal = ({ id, isShown, onClose }) => {
       isOpen={isShown}
       onRequestClose={onClose}
       contentLabel="Example Modal"
-      appElement={document.getElementById('app')}
+      // appElement={document.getElementById('app')}
       className="delete-movie-modal"
     >
       <div className="close" onClick={onClose}>

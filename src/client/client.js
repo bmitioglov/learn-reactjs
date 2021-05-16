@@ -15,8 +15,10 @@ delete window.__PRELOADED_STATE__
 const store = createStore(moviesReducer, preloadedState)
 
 hydrate(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <StaticRouter>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </StaticRouter>,
   document.getElementById('app')
 )

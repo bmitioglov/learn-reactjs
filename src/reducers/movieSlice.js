@@ -114,9 +114,9 @@ export const moviesSlice = createSlice({
 
 export const { sortBy, setCategory, setShowMovieHeader, toggleShowMovieHeader } = moviesSlice.actions;
 
-export const selectAllMovies = (state) => state.movies.moviesData;
-export const selectTotalFoundMovies = (state) => state.movies.total;
-export const selectCategory = (state) => state.movies.category;
-export const selectShowMovieHeader = (state) => state.movies.showMovieHeader;
+export const selectAllMovies = (state) => state.movies !== undefined ? state.movies.moviesData : [];
+export const selectTotalFoundMovies = (state) => state.movies !== undefined ? state.movies.total : 0;
+export const selectCategory = (state) => state.movies !== undefined ? state.movies.category : 'All';
+export const selectShowMovieHeader = (state) => state.movies !== undefined ? state.movies.showMovieHeader : false;
 
 export default moviesSlice.reducer;

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider, useSelector } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  StaticRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';

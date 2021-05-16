@@ -1,14 +1,15 @@
 import qs from 'qs'; // Add this at the top of the file
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { StaticRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 
 import thunk from 'redux-thunk';
 import movieReducer from '../../src/reducers/movieSlice';
 import App from '../App';
+import {StaticRouter} from 'react-router';
 
-const rootReducer = combineReducers({
+const moviesReducer = combineReducers({
   movie: movieReducer,
 });
 
@@ -47,23 +48,23 @@ function renderHTML(html, preloadedState) {
 export default function serverRenderer() {
   return (req, res) => {
     const params = qs.parse(req.query);
+  
+  
+  
+    const store = createStore(moviesReducer)
+  
+    // Render the component to a string
+    const renderRoot = () => renderToString(
+      <Provider store={store}>
+        <StaticRouter>
+          <App />
+        </StaticRouter>
+      </Provider>
+    )
     
     // Create a new Redux store instance
-    const store = createStore(rootReducer, applyMiddleware(thunk));
-    
+    // const store = createStore(rootReducer, applyMiddleware(thunk));
     const preloadedState = store.getState();
-    if (params.genre) {
-      preloadedState.movie.genre = params.genre;
-    } else {
-      preloadedState.movie.genre = 'All';
-    }
-    preloadedState.movie.movie = null;
-    
-    const renderRoot = () => (
-      <StaticRouter>
-        <App store={store} />
-      </StaticRouter>
-    );
     
     renderToString(renderRoot());
     
