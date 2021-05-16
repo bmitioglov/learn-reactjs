@@ -4,7 +4,6 @@ import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux'
 import { combineReducers, applyMiddleware, createStore } from 'redux';
 
-import thunk from 'redux-thunk';
 import movieReducer from '../../src/reducers/movieSlice';
 import App from '../App';
 import {StaticRouter} from 'react-router';
