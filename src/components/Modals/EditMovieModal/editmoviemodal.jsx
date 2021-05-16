@@ -25,7 +25,7 @@ const Editmoviemodal = ({ id, title, releaseDate, posterPath, overview, runtime,
       isOpen={show}
       onRequestClose={onClose}
       contentLabel="Edit Modal"
-      appElement={document.getElementById('app')}
+      // appElement={document.getElementById('app')}
       className="edit-movie-modal"
     >
       <div className="close" onClick={onClose}>

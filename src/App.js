@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { Provider, useSelector } from 'react-redux';
 import {
-  BrowserRouter as Router,
+  StaticRouter as Router,
   Route,
   Switch,
 } from 'react-router-dom';
@@ -75,9 +75,13 @@ const App = () => {
   );
 };
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app'),
-);
+export default App;
+
+if (typeof window !== 'undefined') {
+  ReactDOM.hydrate(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('app'),
+  );
+}

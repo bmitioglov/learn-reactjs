@@ -11,7 +11,7 @@ const Movieslist = () => {
   const movies = useSelector(selectAllMovies);
   
   const responseStatus = useSelector((state) => {
-    return state.movies.status;
+    return state.movies !== undefined ? state.movies.status : 'success';
   });
   
   const location = useLocation();
